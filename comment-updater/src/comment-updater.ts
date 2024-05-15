@@ -6,8 +6,10 @@
  * @copyright MIT see LICENSE.md
  */
 
-import fs from 'fs'
+import fs from 'node:fs'
 import path from 'node:path'
+
+import { scriptError } from '@spongex/script-error'
 
 /**
  * Font colors
@@ -33,15 +35,6 @@ const constants = {
   VERBOSE: false,
   LOG: true,
   TESTING: false
-}
-
-/**
- * Display an error message and exit script.
- * @param message Message to display.
- */
-const scriptError = (message:string) => {
-  console.error(`${colors.RED}Error:  ${message}  Exiting...${colors.CLEAR}`)
-  process.exit(1)
 }
 
 //  Command interface

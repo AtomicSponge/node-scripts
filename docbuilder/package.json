@@ -41,6 +41,9 @@
     "LICENSE.md",
     "README.md"
   ],
+  "dependencies": {
+    "@spongex/script-error": "^1.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20.12.11",
     "tsup": "^8.0.2",

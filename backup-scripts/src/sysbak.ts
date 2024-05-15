@@ -6,10 +6,10 @@
  * @copyright MIT see LICENSE.md
  */
 
-import fs from 'fs'
+import fs from 'node:fs'
 import path from 'node:path'
-import os from 'os'
-import { exec } from 'child_process'
+import os from 'node:os'
+import { exec } from 'node:child_process'
 import { colors, loadSettings, scriptError } from './_common.js'
 
 /**

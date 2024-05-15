@@ -6,9 +6,11 @@
  * @copyright MIT see LICENSE.md
  */
 
-import fs from 'fs'
+import fs from 'node:fs'
 import path from 'node:path'
-import { exec } from 'child_process'
+import { exec } from 'node:child_process'
+
+import { scriptError } from '@spongex/script-error'
 
 /**
  * Font colors
@@ -29,15 +31,6 @@ const constants = {
   SETTINGS_FILE: `.docbuilder_config.json`,
   LOG_FILE: `.docbuilder.log`,
   OUTPUT_FOLDER: 'docs'
-}
-
-/**
- * Display an error message and exit script.
- * @param message Message to display.
- */
-const scriptError = (message:string) => {
-  console.error(`${colors.RED}Error:  ${message}  Exiting...${colors.CLEAR}`)
-  process.exit(1)
 }
 
 /**

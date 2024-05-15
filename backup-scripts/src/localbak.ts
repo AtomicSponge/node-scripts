@@ -6,7 +6,7 @@
  * @copyright MIT see LICENSE.md
  */
 
-import fs from 'fs'
+import fs from 'node:fs'
 import path from 'node:path'
 import { colors, loadSettings, scriptError } from './_common.js'
 
