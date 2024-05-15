@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AtomicSponge/node_scripts",
+    "url": "https://github.com/AtomicSponge/node-scripts",
     "directory": "docbuilder"
   },
   "keywords": [
@@ -17,9 +17,9 @@
   ],
   "url": "https://www.npmjs.com/package/@spongex/docbuilder",
   "bugs": {
-    "url": "https://github.com/AtomicSponge/node_scripts/issues"
+    "url": "https://github.com/AtomicSponge/node-scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node_scripts/#readme",
+  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

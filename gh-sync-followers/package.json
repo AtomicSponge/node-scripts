@@ -25,7 +25,7 @@
     "prepublishOnly": "tsup"
   },
   "bin": {
-    "gh_sync_followers": "dist/gh-sync-followers.js"
+    "gh-sync-followers": "dist/gh-sync-followers.js"
   },
   "type": "module",
   "tsup": {

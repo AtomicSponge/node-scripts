@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/AtomicSponge/node-scripts",
-    "directory": "comment_updater"
+    "directory": "comment-updater"
   },
   "keywords": [
     "programming",
@@ -24,7 +24,7 @@
     "prepublishOnly": "tsup"
   },
   "bin": {
-    "comment_updater": "dist/comment-updater.js"
+    "comment-updater": "dist/comment-updater.js"
   },
   "type": "module",
   "tsup": {

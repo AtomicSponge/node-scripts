@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/AtomicSponge/node-scripts",
-    "directory": "npm_publisher"
+    "directory": "npm-publisher"
   },
   "keywords": [
     "npm",
@@ -25,7 +25,7 @@
     "prepublishOnly": "tsup"
   },
   "bin": {
-    "npm_publisher": "dist/npm-publisher.js"
+    "npm-publisher": "dist/npm-publisher.js"
   },
   "type": "module",
   "tsup": {
