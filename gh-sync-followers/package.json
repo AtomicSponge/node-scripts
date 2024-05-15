@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AtomicSponge/node-scripts",
+    "url": "git+https://github.com/AtomicSponge/node-scripts.git",
     "directory": "gh_sync_followers"
   },
   "url": "https://www.npmjs.com/package/@spongex/gh-sync-followers",
