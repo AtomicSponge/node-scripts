@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/AtomicSponge/node_scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node_scripts/npm_publisher#readme",
+  "homepage": "https://github.com/AtomicSponge/node_scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

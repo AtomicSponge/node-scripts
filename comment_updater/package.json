@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/AtomicSponge/node_scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node_scripts/comment_updater#readme",
+  "homepage": "https://github.com/AtomicSponge/node_scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"
