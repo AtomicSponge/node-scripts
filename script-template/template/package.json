@@ -1,20 +1,23 @@
 {
   "name": "script-name",
   "version": "1.0.0",
-  "description": "Description",
-  "author": "Author",
+  "description": "description",
+  "author": "author",
   "license": "license",
   "repository": {
     "type": "git",
-    "url": "https://github.com/url",
+    "url": "https://github.com/org/repo",
     "directory": "optional"
   },
-  "keywords": [ "keywords" ],
   "url": "https://www.npmjs.com/package/url",
+  "homepage": "https://github.com/url/#readme",
+  "keywords": [
+    "keywords"
+  ],
   "bugs": {
     "url": "https://github.com/url"
   },
-  "homepage": "https://github.com/url/#readme",
+  "main": "index.ts",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

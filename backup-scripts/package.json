@@ -9,16 +9,16 @@
     "url": "https://github.com/AtomicSponge/node-scripts",
     "directory": "backup-scripts"
   },
+  "url": "https://www.npmjs.com/package/@spongex/backup-scripts",
+  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "keywords": [
     "backup",
     "workflow",
     "script"
   ],
-  "url": "https://www.npmjs.com/package/@spongex/backup-scripts",
   "bugs": {
     "url": "https://github.com/AtomicSponge/node-scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

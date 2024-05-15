@@ -1,23 +1,23 @@
 {
   "name": "template",
   "version": "1.0.0",
-  "description": "Desc",
+  "description": "description",
   "author": "author",
-  "license": "SEE LICENSE IN LICENSE.md",
-  "url": "https://www.npmjs.com/package/url",
-  "homepage": "https://github.com/org/repo#readme",
-  "main": "index.ts",
+  "license": "license",
   "repository": {
     "type": "git",
-    "url": "https://github.com/org/url",
+    "url": "https://github.com/org/repo",
     "directory": "optional"
   },
+  "url": "https://www.npmjs.com/package/url",
+  "homepage": "https://github.com/org/repo#readme",
   "keywords": [
     "keywords"
   ],
   "bugs": {
-    "url": "https://github.com/org/url"
+    "url": "https://github.com/org/repo/issues"
   },
+  "main": "index.ts",
   "scripts": {
     "build": "unbuild",
     "prepublishOnly": "unbuild"

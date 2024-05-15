@@ -9,17 +9,17 @@
     "url": "https://github.com/AtomicSponge/node-scripts",
     "directory": "script-template"
   },
+  "url": "https://www.npmjs.com/package/@spongex/script-template",
+  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "keywords": [
     "template",
     "node",
     "nodejs",
     "script"
   ],
-  "url": "https://www.npmjs.com/package/@spongex/script-template",
   "bugs": {
     "url": "https://github.com/AtomicSponge/node_scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

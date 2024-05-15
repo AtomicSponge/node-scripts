@@ -9,16 +9,16 @@
     "url": "https://github.com/AtomicSponge/node-scripts",
     "directory": "comment-updater"
   },
+  "url": "https://www.npmjs.com/package/@spongex/comment-updater",
+  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "keywords": [
     "programming",
     "workflow",
     "script"
   ],
-  "url": "https://www.npmjs.com/package/@spongex/comment-updater",
   "bugs": {
     "url": "https://github.com/AtomicSponge/node-scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

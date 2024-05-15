@@ -9,17 +9,17 @@
     "url": "https://github.com/AtomicSponge/node-scripts",
     "directory": "npm-publisher"
   },
+  "url": "https://www.npmjs.com/package/@spongex/npm-publisher",
+  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "keywords": [
     "npm",
     "publish",
     "auto",
     "script"
   ],
-  "url": "https://www.npmjs.com/package/@spongex/npm-publisher",
   "bugs": {
     "url": "https://github.com/AtomicSponge/node-scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"

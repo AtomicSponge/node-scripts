@@ -3,10 +3,15 @@
     "module": "nodenext",
     "target": "es2022",
     "moduleResolution": "nodenext",
-    "strict": true,
     "declaration": true,
     "verbatimModuleSyntax": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    /* Linting */
+    "strict": true,
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "./src/**/*",
