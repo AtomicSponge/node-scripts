@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "es2022",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "declaration": true,
+    "verbatimModuleSyntax": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "./src/**/*",
+    "./index.ts"
+  ]
+}
