@@ -1,0 +1,48 @@
+{
+  "name": "@spongex/comment_updater",
+  "version": "2.0.1",
+  "description": "Batch updates code comments at the top of source files",
+  "author": "Matthew Evans",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomicSponge/node_scripts",
+    "directory": "comment_updater"
+  },
+  "keywords": [
+    "programming",
+    "workflow",
+    "script"
+  ],
+  "url": "https://www.npmjs.com/package/@spongex/comment_updater",
+  "bugs": {
+    "url": "https://github.com/AtomicSponge/node_scripts/issues"
+  },
+  "homepage": "https://github.com/AtomicSponge/node_scripts/comment_updater#readme",
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "tsup"
+  },
+  "bin": {
+    "comment_updater": "dist/comment_updater.js"
+  },
+  "type": "module",
+  "tsup": {
+    "entry": [
+      "./src/comment_updater.ts"
+    ],
+    "format": "esm",
+    "sourcemap": false,
+    "clean": true
+  },
+  "files": [
+    "./dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}

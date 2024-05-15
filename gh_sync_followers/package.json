@@ -1,0 +1,49 @@
+{
+  "name": "@spongex/gh_sync_followers",
+  "version": "1.0.1",
+  "description": "Sync GitHub Followers",
+  "author": "Matthew Evans",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomicSponge/node_scripts",
+    "directory": "gh_sync_followers"
+  },
+  "keywords": [
+    "github",
+    "followers",
+    "sync",
+    "script"
+  ],
+  "url": "https://www.npmjs.com/package/@spongex/gh_sync_followers",
+  "bugs": {
+    "url": "https://github.com/AtomicSponge/node_scripts/issues"
+  },
+  "homepage": "https://github.com/AtomicSponge/node_scripts/gh_sync_followers#readme",
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "tsup"
+  },
+  "bin": {
+    "gh_sync_followers": "dist/gh_sync_followers.js"
+  },
+  "type": "module",
+  "tsup": {
+    "entry": [
+      "./src/gh_sync_followers.ts"
+    ],
+    "format": "esm",
+    "sourcemap": false,
+    "clean": true
+  },
+  "files": [
+    "./dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@spongex/npm_publisher",
+  "version": "1.0.0",
+  "description": "NPM Auto Publisher",
+  "author": "Matthew Evans",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomicSponge/node_scripts",
+    "directory": "npm_publisher"
+  },
+  "keywords": [
+    "npm",
+    "publish",
+    "auto",
+    "script"
+  ],
+  "url": "https://www.npmjs.com/package/@spongex/npm_publisher",
+  "bugs": {
+    "url": "https://github.com/AtomicSponge/node_scripts/issues"
+  },
+  "homepage": "https://github.com/AtomicSponge/node_scripts/npm_publisher#readme",
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "tsup"
+  },
+  "bin": {
+    "npm_publisher": "dist/npm_publisher.js"
+  },
+  "type": "module",
+  "tsup": {
+    "entry": [
+      "./src/npm_publisher.ts"
+    ],
+    "format": "esm",
+    "sourcemap": false,
+    "clean": true
+  },
+  "files": [
+    "./dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
