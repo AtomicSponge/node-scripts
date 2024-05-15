@@ -78,3 +78,8 @@ The following additional options can also be set:
 These can also be set on the command line using *-v* or *--verbose* and *--nologging*.
 
 Passing the *-t* or *--test* option will not modify files but instead show the output to console.
+
+# Changelog
+
+## 2.0.1
+Bump packages and relocated project on GitHub

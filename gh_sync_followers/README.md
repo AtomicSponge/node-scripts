@@ -18,3 +18,8 @@ Once GitHub CLI is set up, there is no configuration for this script!  Just run:
 ```
 npx gh_sync_followers
 ```
+
+# Changelog
+
+## 1.0.1
+Bump packages and relocated project on GitHub

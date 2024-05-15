@@ -82,3 +82,8 @@ The following variables can be used:
 - __"nologging": "nologging"__ - Disable logging.
 - __"removeold": "true"__ - Delete the old documentation folder before generation.
 - __"checkfolder": "true"__ - Per-job setting to verify folder exists before generating docs.
+
+# Changelog
+
+## 2.0.1
+Bump packages and relocated project on GitHub

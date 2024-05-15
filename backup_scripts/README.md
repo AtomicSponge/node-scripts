@@ -113,3 +113,8 @@ The script has the following command variables pre-defined:
 Additional variables can be defiend for replacement in the __backup_command__.  Either with an optional __"cmdVars"__ array or a __"vars"__ array defiend in each job.  Each command is an object that requires a __"variable"__ and __"value"__ item.  See the above example for details.
 
 Each job object can also have a __backup_command__ item that will overwrite the global defiend one.
+
+# Changelog
+
+## 2.0.1
+Bump packages and relocated project on GitHub
