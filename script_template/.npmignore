@@ -3,6 +3,8 @@
 node_modules
 src
 
+template/node_modules
+template/src
 template/package-lock.json
 
 package-lock.json

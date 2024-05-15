@@ -74,6 +74,12 @@ fs.renameSync(
   path.join(projectDir, '.npmignore')
 )
 
+//  Rename main script file
+fs.renameSync(
+  path.join(`${projectDir}/src`, 'main.ts'),
+  path.join(`${projectDir}/src`, `${projectName}.ts`)
+)
+
 const projectPackageJson = require(path.join(projectDir, 'package.json'))
 
 projectPackageJson.name = projectName
