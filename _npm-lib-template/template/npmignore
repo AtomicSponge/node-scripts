@@ -1,7 +1,0 @@
-.gitignore
-
-node_modules
-src
-
-index.ts
-tsconfig.json
