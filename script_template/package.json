@@ -1,0 +1,55 @@
+{
+  "name": "@spongex/script_template",
+  "version": "1.0.0",
+  "description": "NodeJS Script Template",
+  "author": "Matthew Evans",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtomicSponge/node_scripts",
+    "directory": "script_template"
+  },
+  "keywords": [
+    "template",
+    "node",
+    "nodejs",
+    "script"
+  ],
+  "url": "https://www.npmjs.com/package/@spongex/script_template",
+  "bugs": {
+    "url": "https://github.com/AtomicSponge/node_scripts/issues"
+  },
+  "homepage": "https://github.com/AtomicSponge/node_scripts/#readme",
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "tsup"
+  },
+  "bin": {
+    "npm_publisher": "dist/install.js"
+  },
+  "type": "module",
+  "tsup": {
+    "entry": [
+      "./src/install.ts"
+    ],
+    "format": "esm",
+    "sourcemap": false,
+    "clean": true
+  },
+  "files": [
+    "./template",
+    "./dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "dependencies": {
+    "kolorist": "^1.8.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}

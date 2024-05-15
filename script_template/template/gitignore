@@ -1,0 +1,8 @@
+node_modules
+dist
+
+servercfg/*
+!servercfg/README.md
+logs/*
+!logs/README.md
+scripts

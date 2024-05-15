@@ -1,0 +1,12 @@
+.gitignore
+
+node_modules
+src
+
+servercfg/*
+!servercfg/README.md
+logs/*
+!logs/README.md
+scripts
+
+package-lock.json
