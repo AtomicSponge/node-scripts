@@ -1,37 +1,35 @@
 {
-  "name": "@spongex/backup_scripts",
+  "name": "@spongex/comment-updater",
   "version": "2.0.1",
-  "description": "Full system and folder backup scripts",
+  "description": "Batch updates code comments at the top of source files",
   "author": "Matthew Evans",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AtomicSponge/node_scripts",
-    "directory": "backup_scripts"
+    "url": "https://github.com/AtomicSponge/node-scripts",
+    "directory": "comment_updater"
   },
   "keywords": [
-    "backup",
+    "programming",
     "workflow",
     "script"
   ],
-  "url": "https://www.npmjs.com/package/@spongex/backup_scripts",
+  "url": "https://www.npmjs.com/package/@spongex/comment-updater",
   "bugs": {
-    "url": "https://github.com/AtomicSponge/node_scripts/issues"
+    "url": "https://github.com/AtomicSponge/node-scripts/issues"
   },
-  "homepage": "https://github.com/AtomicSponge/node_scripts/#readme",
+  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
   "scripts": {
     "build": "tsup",
     "prepublishOnly": "tsup"
   },
   "bin": {
-    "sysbak": "dist/sysbak.js",
-    "localbak": "dist/localbak.js"
+    "comment_updater": "dist/comment-updater.js"
   },
   "type": "module",
   "tsup": {
     "entry": [
-      "./src/sysbak.ts",
-      "./src/localbak.ts"
+      "./src/comment-updater.ts"
     ],
     "format": "esm",
     "sourcemap": false,

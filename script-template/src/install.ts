@@ -76,7 +76,7 @@ fs.renameSync(
 
 //  Rename main script file
 fs.renameSync(
-  path.join(`${projectDir}/src`, 'main.ts'),
+  path.join(`${projectDir}/src`, 'script-name.ts'),
   path.join(`${projectDir}/src`, `${projectName}.ts`)
 )
 

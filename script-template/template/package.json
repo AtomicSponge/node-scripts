@@ -1,5 +1,5 @@
 {
-  "name": "script_name",
+  "name": "script-name",
   "version": "1.0.0",
   "description": "Description",
   "author": "Author",
@@ -20,12 +20,12 @@
     "prepublishOnly": "tsup"
   },
   "bin": {
-    "npm_publisher": "dist/script_name.js"
+    "npm_publisher": "dist/script-name.js"
   },
   "type": "module",
   "tsup": {
     "entry": [
-      "./src/script_name.ts"
+      "./src/script-name.ts"
     ],
     "format": "esm",
     "sourcemap": false,
