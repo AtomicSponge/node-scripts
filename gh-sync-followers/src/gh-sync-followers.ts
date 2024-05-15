@@ -7,21 +7,13 @@
  */
 
 import { execSync } from 'node:child_process'
+import { scriptError } from '@spongex/script-error'
 
 const colors = {
   RED:    `\x1b[31m`,
   GREEN:  `\x1b[32m`,
   CYAN:   `\x1b[36m`,
   CLEAR:  `\x1b[0m`
-}
-
-/**
- * Display an error message and exit script.
- * @param message Message to display.
- */
-const scriptError = (message:string) => {
-  console.error(`${colors.RED}Error:  ${message}  Exiting...${colors.CLEAR}`)
-  process.exit(1)
 }
 
 console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
@@ -62,7 +54,7 @@ console.log(`Adding followers...`)
 addFollowers.forEach((follower:{login:string}) => {
   try {
     execSync(`${exeCmd} --method PUT ${apiHeaders} /user/following/${follower.login}`)
-  } catch(error:any) { scriptError(error.message) }
+  } catch(error:any) { scriptError(error.message, { exit: false }) }
 })
 console.log(`Added ${colors.CYAN}${addFollowers.length}${colors.CLEAR} new followers!`)
 
@@ -71,7 +63,7 @@ console.log(`Removing unfollowers...`)
 removeFollowers.forEach((following:{login:string}) => {
   try {
     execSync(`${exeCmd} --method DELETE ${apiHeaders} /user/following/${following.login}`)
-  } catch(error:any) { scriptError(error.message) }
+  } catch(error:any) { scriptError(error.message, { exit: false }) }
 })
 console.log(`Removed ${colors.CYAN}${removeFollowers.length}${colors.CLEAR} unfollowers!`)
 
