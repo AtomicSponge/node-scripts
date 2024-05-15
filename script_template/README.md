@@ -1,5 +1,10 @@
 #  script_templage
 
+## WIP
+
 Create a new NodeJS script using a template.
 
-WIP
+# Changelog
+
+## 1.0.0
+Initial release
