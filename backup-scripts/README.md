@@ -4,11 +4,11 @@ Local and system backup scripts.  See each section for usage of each script.
 
 Install globally:
 ```
-npm i -g @spongex/backup_scrips
+npm i -g @spongex/backup-scrips
 ```
 Or per-project as a dev-dependency:
 ```
-npm i @spongex/backup_scrips --save-dev
+npm i @spongex/backup-scrips --save-dev
 ```
 
 ---
@@ -117,4 +117,5 @@ Each job object can also have a __backup_command__ item that will overwrite the 
 # Changelog
 
 ## 2.0.1
-Bump packages and relocated project on GitHub
+- Bump packages and relocated project on GitHub
+- Updated project name to proper NPM formatting

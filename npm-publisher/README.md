@@ -3,10 +3,10 @@
 ## WIP
 
 ```
-npx npm_publisher
+npx npm-publisher
 ```
 
 # Changelog
 
 ## 1.0.0
-Initial release
+- Initial release

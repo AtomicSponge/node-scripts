@@ -6,7 +6,7 @@ Uses the [GitHub CLI](https://cli.github.com/) tool to make requests to the [Git
 
 Install globally to run anywhere:
 ```
-npm i -g @spongex/gh_sync_followers
+npm i -g @spongex/gh-sync-followers
 ```
 
 For this script to run you need to grant the "user" scope to GitHub CLI.  Run the following from the command line:
@@ -16,10 +16,11 @@ gh auth refresh -h github.com -s user
 
 Once GitHub CLI is set up, there is no configuration for this script!  Just run:
 ```
-npx gh_sync_followers
+npx gh-sync-followers
 ```
 
 # Changelog
 
 ## 1.0.1
-Bump packages and relocated project on GitHub
+- Bump packages and relocated project on GitHub
+- Updated project name to proper NPM formatting

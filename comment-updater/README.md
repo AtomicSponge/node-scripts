@@ -4,12 +4,12 @@ __WARNING!__  This script mass-modifies source code files.  Use at your own risk
 
 Install globally:
 ```
-npm i -g @spongex/comment_updater
+npm i -g @spongex/comment-updater
 ```
 
 Or per-project as a dev-dependency:
 ```
-npm i @spongex/comment_updater --save-dev
+npm i @spongex/comment-updater --save-dev
 ```
 
 Batch updates code comments at the top of source files.
@@ -82,4 +82,5 @@ Passing the *-t* or *--test* option will not modify files but instead show the o
 # Changelog
 
 ## 2.0.1
-Bump packages and relocated project on GitHub
+- Bump packages and relocated project on GitHub
+- Updated project name to proper NPM formatting
