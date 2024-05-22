@@ -1,0 +1,47 @@
+{
+  "name": "@spongex/script-name",
+  "version": "1.0.0",
+  "description": "description",
+  "author": "Matthew Evans",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomicSponge/node-scripts.git",
+    "directory": "optional"
+  },
+  "url": "https://www.npmjs.com/package/@spongex/script-name",
+  "homepage": "https://github.com/AtomicSponge/node-scripts#readme",
+  "keywords": [
+    "keywords"
+  ],
+  "bugs": {
+    "url": "https://github.com/AtomicSponge/node-scripts/issues"
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "tsup"
+  },
+  "bin": {
+    "script-name": "dist/script-name.js"
+  },
+  "type": "module",
+  "tsup": {
+    "entry": [
+      "./src/script-name.ts"
+    ],
+    "format": "esm",
+    "sourcemap": false,
+    "clean": true
+  },
+  "files": [
+    "./template",
+    "./dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
