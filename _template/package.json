@@ -34,7 +34,6 @@
     "clean": true
   },
   "files": [
-    "./template",
     "./dist",
     "LICENSE.md",
     "README.md"
