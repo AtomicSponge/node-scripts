@@ -3,6 +3,7 @@
     "**/.git": true,
     "**/dist": true,
     "**/node_modules": true,
-    "**/_template": true
+    "**/_template": true,
+    "**/package-lock.json": true
   }
 }
