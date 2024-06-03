@@ -24,7 +24,7 @@ npx gh-sync-followers
 # Changelog
 
 ## 1.1.0
-- Added whitelist & blacklist features
+- Added approvelist & ignorelist features
 - Bump dependencies
 
 ## 1.0.1

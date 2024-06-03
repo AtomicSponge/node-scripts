@@ -18,15 +18,13 @@ const colors = {
   CLEAR:  `\x1b[0m`
 }
 
-
-
-
-
 console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
+
 const program = new Command()
 program
   .name('gh-sync-followers')
-  .description('Sync your GitHub followers!')
+  .summary('Sync your GitHub followers!')
+  .description('Run this command without any arguments to perform a sync of your GitHub followers')
   .action(async () => {
     const exeCmd = `gh api`
     const apiHeaders = 
@@ -77,6 +75,21 @@ program
     })
     console.log(`Removed ${colors.CYAN}${removeFollowers.length}${colors.CLEAR} unfollowers!`)
   })
+
+program.command('approvelist')
+  .description('Add a GitHib user to your approvelist')
+  .argument('arg', 'arg')
+  .action(() => {
+    //
+  })
+
+program.command('ignorelist')
+  .description('Add a GitHib user to your ignorelist')
+  .argument('arg', 'arg')
+  .action(() => {
+    //
+  })
+program.showHelpAfterError()
 await program.parseAsync()
 console.log(`${colors.GREEN}Done!${colors.CLEAR}`)
 process.exit(0)
