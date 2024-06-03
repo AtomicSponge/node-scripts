@@ -119,7 +119,7 @@ program
  * Add GitHub users to Approve List
  */
 program.command('approvelist')
-  .description('Add GitHib users to your approvelist')
+  .description('Add GitHib users to your approved list')
   .argument('<users...>', 'One or more GitHub usernames to add')
   .action((users) => {
     users.forEach((user:string) => { approveList.push(user) })
@@ -138,7 +138,7 @@ program.command('approvelist')
  * Add GitHub users to Ignore List
  */
 program.command('ignorelist')
-  .description('Add GitHib users to your ignorelist')
+  .description('Add GitHib users to your ignored list')
   .argument('<users...>', 'One or more GitHub usernames to add')
   .action((users) => {
     users.forEach((user:string) => { ignoreList.push(user) })
@@ -157,7 +157,7 @@ program.command('ignorelist')
  * Remove GitHub users from Approved List
  */
 program.command('approvelist-remove')
-  .description('Remove GitHib users from your approvelist')
+  .description('Remove GitHib users from your approved list')
   .argument('<users...>', 'One or more GitHub usernames to remove')
   .action((users) => {
     users.forEach((user:string) => {
@@ -176,7 +176,7 @@ program.command('approvelist-remove')
  * Remove GitHub users from Ignore List
  */
 program.command('ignorelist-remove')
-  .description('Remove GitHib users from your ignorelist')
+  .description('Remove GitHib users from your ignored list')
   .argument('<users...>', 'One or more GitHub usernames to remove')
   .action((users) => {
     users.forEach((user:string) => {
