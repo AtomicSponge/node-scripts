@@ -6,6 +6,8 @@
  * @copyright MIT see LICENSE.md
  */
 
+import fs, { existsSync } from 'node:fs'
+import path from 'node:path'
 import { execSync } from 'node:child_process'
 import { Command } from 'commander'
 import { scriptError } from '@spongex/script-error'
@@ -19,6 +21,26 @@ const colors = {
 }
 
 console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
+
+const approveList:Array<string> = []
+const ignoreList:Array<string> = []
+
+if (__os_appdata_path === null) scriptError('Unable to find local app storage!')
+const listLocation = path.join(<string>__os_appdata_path, 'gh-sync-followers', 'lists.json')
+if (fs.existsSync(listLocation)) {
+  //  Lists file exists, load it
+  try {
+    const data = JSON.parse(fs.readFileSync(listLocation).toString())
+    if(data.hasOwnProperty('approveList'))
+      data.approveList.forEach((item:string) => { approveList.push(item) })
+    if(data.hasOwnProperty('ignoreList'))
+      data.ignoreList.forEach((item:string) => { ignoreList.push(item) })
+  } catch (error:any) {
+    scriptError(error.message)
+  }
+} else {
+  //  Lists file does not exist, create it
+}
 
 const program = new Command()
 program
