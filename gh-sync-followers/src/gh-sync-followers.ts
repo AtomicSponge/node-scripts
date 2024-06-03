@@ -20,10 +20,16 @@ const colors = {
   CLEAR:  `\x1b[0m`
 }
 
-console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
+let approveList:Array<string> = []
+let ignoreList:Array<string> = []
 
-const approveList:Array<string> = []
-const ignoreList:Array<string> = []
+const saveListData = () => {
+  try {
+    //
+  } catch (error:any) { throw error }
+}
+
+console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
 
 if (__os_appdata_path === null) scriptError('Unable to find local app storage!')
 const listLocation = path.join(<string>__os_appdata_path, 'gh-sync-followers', 'lists.json')
@@ -98,19 +104,82 @@ program
     console.log(`Removed ${colors.CYAN}${removeFollowers.length}${colors.CLEAR} unfollowers!`)
   })
 
+/*
+ * Add GitHub users to Approve List
+ */
 program.command('approvelist')
-  .description('Add a GitHib user to your approvelist')
-  .argument('arg', 'arg')
-  .action(() => {
-    //
+  .description('Add GitHib users to your approvelist')
+  .argument('<users...>', 'One or more GitHub usernames to add')
+  .action((users) => {
+    users.forEach((user:string) => { approveList.push(user) })
+    approveList = approveList.filter((val, idx, arr) => {
+      return arr.indexOf(val) === idx
+    })
+
+    try {
+      saveListData()
+    } catch (error:any) {
+      scriptError(error.message)
+    }
   })
 
+/*
+ * Add GitHub users to Ignore List
+ */
 program.command('ignorelist')
-  .description('Add a GitHib user to your ignorelist')
-  .argument('arg', 'arg')
-  .action(() => {
-    //
+  .description('Add GitHib users to your ignorelist')
+  .argument('<users...>', 'One or more GitHub usernames to add')
+  .action((users) => {
+    users.forEach((user:string) => { ignoreList.push(user) })
+    ignoreList = ignoreList.filter((val, idx, arr) => {
+      return arr.indexOf(val) === idx
+    })
+
+    try {
+      saveListData()
+    } catch (error:any) {
+      scriptError(error.message)
+    }
   })
+
+/*
+ * Remove GitHub users from Approved List
+ */
+program.command('approvelist-remove')
+  .description('Remove GitHib users from your approvelist')
+  .argument('<users...>', 'One or more GitHub usernames to remove')
+  .action((users) => {
+    users.forEach((user:string) => {
+      const idx = approveList.indexOf(user)
+      if (idx > -1) approveList.splice(idx, 1)
+    })
+
+    try {
+      saveListData()
+    } catch (error:any) {
+      scriptError(error.message)
+    }
+  })
+
+/*
+ * Remove GitHub users from Ignore List
+ */
+program.command('ignorelist-remove')
+  .description('Remove GitHib users from your ignorelist')
+  .argument('<users...>', 'One or more GitHub usernames to remove')
+  .action((users) => {
+    users.forEach((user:string) => {
+      const idx = approveList.indexOf(user)
+      if (idx > -1) approveList.splice(idx, 1)
+    })
+
+    try {
+      saveListData()
+    } catch (error:any) {
+      scriptError(error.message)
+    }
+  })
+
 program.showHelpAfterError()
 await program.parseAsync()
 console.log(`${colors.GREEN}Done!${colors.CLEAR}`)
