@@ -1,6 +1,6 @@
 {
   "name": "@spongex/gh-sync-followers",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Sync GitHub Followers",
   "author": "Matthew Evans",
   "license": "MIT",
