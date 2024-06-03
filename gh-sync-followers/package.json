@@ -41,12 +41,14 @@
     "LICENSE.md",
     "README.md"
   ],
+  "dependencies": {
+    "@spongex/os-appdata-path": "^0.2.1",
+    "@spongex/script-error": "^1.0.0",
+    "commander": "^12.1.0"
+  },
   "devDependencies": {
     "@types/node": "^20.14.0",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "@spongex/script-error": "^1.0.0"
   }
 }

@@ -14,12 +14,18 @@ For this script to run you need to grant the "user" scope to GitHub CLI.  Run th
 gh auth refresh -h github.com -s user
 ```
 
-Once GitHub CLI is set up, there is no configuration for this script!  Just run:
+Once GitHub CLI is set up run:
 ```
 npx gh-sync-followers
 ```
 
+## Whitelist & Blacklist
+
 # Changelog
+
+## 1.1.0
+- Added whitelist & blacklist features
+- Bump dependencies
 
 ## 1.0.1
 - Bump packages and relocated project on GitHub
