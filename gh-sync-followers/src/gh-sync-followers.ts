@@ -20,23 +20,29 @@ const colors = {
   CLEAR:  `\x1b[0m`
 }
 
+console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
+
+if (__os_appdata_path === null) scriptError('Unable to find local app storage!')
+const listLocation = path.join(<string>__os_appdata_path, 'gh-sync-followers')
+
 let approveList:Array<string> = []
 let ignoreList:Array<string> = []
 
 const saveListData = () => {
   try {
-    //
+    if(!fs.existsSync(listLocation)) fs.mkdirSync(listLocation)
+    const temp = JSON.stringify({
+      approveList: approveList,
+      ignoreList: ignoreList
+    })
+    fs.writeFileSync(path.join(listLocation, 'gh-user-lists.json'), temp)
   } catch (error:any) { throw error }
 }
 
-console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
-
-if (__os_appdata_path === null) scriptError('Unable to find local app storage!')
-const listLocation = path.join(<string>__os_appdata_path, 'gh-sync-followers', 'lists.json')
-if (fs.existsSync(listLocation)) {
+if (fs.existsSync(path.join(listLocation, 'gh-user-lists.json'))) {
   //  Lists file exists, load it
   try {
-    const data = JSON.parse(fs.readFileSync(listLocation).toString())
+    const data = JSON.parse(fs.readFileSync(path.join(listLocation, 'gh-user-lists.json')).toString())
     if(data.hasOwnProperty('approveList'))
       data.approveList.forEach((item:string) => { approveList.push(item) })
     if(data.hasOwnProperty('ignoreList'))
@@ -46,6 +52,11 @@ if (fs.existsSync(listLocation)) {
   }
 } else {
   //  Lists file does not exist, create it
+  try {
+    saveListData()
+  } catch (error:any) {
+    scriptError(error.message)
+  }
 }
 
 const program = new Command()
