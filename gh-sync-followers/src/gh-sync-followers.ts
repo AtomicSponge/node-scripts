@@ -28,6 +28,10 @@ const listLocation = path.join(<string>__os_appdata_path, 'gh-sync-followers')
 let approveList:Array<string> = []
 let ignoreList:Array<string> = []
 
+/**
+ * Save the approve & ignore lists to file
+ * @throws Any errors related to saving the file
+ */
 const saveListData = () => {
   try {
     if(!fs.existsSync(listLocation)) fs.mkdirSync(listLocation)
