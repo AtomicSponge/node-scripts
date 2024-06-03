@@ -6,7 +6,7 @@
  * @copyright MIT see LICENSE.md
  */
 
-import fs, { existsSync } from 'node:fs'
+import fs from 'node:fs'
 import path from 'node:path'
 import { execSync } from 'node:child_process'
 import { Command } from 'commander'
