@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "tsup"
+    "prepublishOnly": "npm run build"
   },
   "bin": {
     "gh-sync-followers": "dist/gh-sync-followers.js"
