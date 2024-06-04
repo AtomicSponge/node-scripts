@@ -21,6 +21,39 @@ npx gh-sync-followers
 
 ## Approvelist & Ignorelist
 
+To add a user or a list of users to the approved list, enter:
+
+```
+npx gh-sync-followers approvelist <users...>
+```
+
+To add a user or a list of users to the ignored list, enter:
+
+```
+npx gh-sync-followers ignorelist <users...>
+```
+
+To remove a user or group of users from the approved list, enter:
+
+```
+npx gh-sync-followers approvelist-remove <users...>
+```
+
+To remove a user or group of users from the ignored list, enter:
+
+```
+npx gh-sync-followers ignorelist-remove <users...>
+```
+
+Examples:
+```
+npx gh-sync-followers approvelist AtomicSponge otheruser
+```
+
+```
+npx gh-sync-followers ignorelist-remove AtomicSponge
+```
+
 # Changelog
 
 ## 1.1.0
