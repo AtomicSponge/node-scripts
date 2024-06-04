@@ -104,23 +104,29 @@ program
 
     //  Add new followers not being followed
     console.log(`Adding followers...`)
+    let counter = 0
     addFollowers.forEach((follower:{login:string}) => {
       try {
-        if(!ignoreList.includes(follower.login))
+        if(!ignoreList.includes(follower.login)) {
           execSync(`${exeCmd} --method PUT ${apiHeaders} /user/following/${follower.login}`)
+          counter++
+        }
       } catch(error:any) { scriptError(error.message, { exit: false }) }
     })
-    console.log(`Added ${colors.CYAN}${addFollowers.length}${colors.CLEAR} new followers!`)
+    console.log(`Added ${colors.CYAN}${counter}${colors.CLEAR} new followers!`)
 
     //  Remove not following back
     console.log(`Removing unfollowers...`)
+    counter = 0
     removeFollowers.forEach((following:{login:string}) => {
       try {
-        if(!approveList.includes(following.login))
+        if(!approveList.includes(following.login)) {
           execSync(`${exeCmd} --method DELETE ${apiHeaders} /user/following/${following.login}`)
+          counter++
+        }
       } catch(error:any) { scriptError(error.message, { exit: false }) }
     })
-    console.log(`Removed ${colors.CYAN}${removeFollowers.length}${colors.CLEAR} unfollowers!`)
+    console.log(`Removed ${colors.CYAN}${counter}${colors.CLEAR} unfollowers!`)
   })
 
 /*
