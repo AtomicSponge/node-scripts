@@ -56,6 +56,15 @@ npx gh-sync-followers approvelist AtomicSponge otheruser
 npx gh-sync-followers ignorelist-remove AtomicSponge
 ```
 
+To view either the approved or ignored lists, enter:
+```
+npx gh-sync-followers approvelist-show
+```
+
+```
+npx gh-sync-followers ignorelist-show
+```
+
 # Changelog
 
 ## 1.1.0
