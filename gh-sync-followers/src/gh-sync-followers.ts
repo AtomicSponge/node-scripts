@@ -27,7 +27,9 @@ console.log(`${colors.GREEN}GitHub Sync Followers Script${colors.CLEAR}`)
 if (__os_appdata_path === null) scriptError('Unable to find local app storage!')
 const listLocation = path.join(<string>__os_appdata_path, 'gh-sync-followers')
 
+/** List of users to never remove */
 let approveList:Array<string> = []
+/** List of users to never add */
 let ignoreList:Array<string> = []
 
 /**
@@ -45,6 +47,7 @@ const saveListData = () => {
   } catch (error:any) { throw error }
 }
 
+//  Check for the Lists file and create it if it does not exist
 if (fs.existsSync(path.join(listLocation, 'gh-user-lists.json'))) {
   //  Lists file exists, load it
   try {
@@ -65,6 +68,9 @@ if (fs.existsSync(path.join(listLocation, 'gh-user-lists.json'))) {
   }
 }
 
+/*
+ * Main program
+ */
 const program = new Command()
 program
   .name('gh-sync-followers')
@@ -229,7 +235,7 @@ program.command('approvelist-show')
  * View the list of ignored GitHub users
  */
 program.command('ignorelist-show')
-  .description('View the approved list')
+  .description('View the ignored list')
   .action(() => {
     if(ignoreList.length === 0) {
       console.log(`${colors.MAGENTA}No users in ignored list${colors.CLEAR}`)
