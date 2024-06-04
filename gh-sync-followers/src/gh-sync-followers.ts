@@ -16,6 +16,7 @@ import { __os_appdata_path } from '@spongex/os-appdata-path'
 const colors = {
   RED:    `\x1b[31m`,
   GREEN:  `\x1b[32m`,
+  MAGENTA: `\x1b[35m`,
   CYAN:   `\x1b[36m`,
   CLEAR:  `\x1b[0m`
 }
@@ -199,6 +200,36 @@ program.command('ignorelist-remove')
     } catch (error:any) {
       scriptError(error.message)
     }
+  })
+
+/*
+ * View the list of approved GitHub users
+ */
+program.command('approvelist-show')
+  .description('View the approved list')
+  .action(() => {
+    if(approveList.length === 0) {
+      console.log(`${colors.MAGENTA}No users in approved list${colors.CLEAR}`)
+      return
+    }
+    approveList.forEach(user => {
+      console.log(`${colors.MAGENTA}${user}${colors.CLEAR}`)
+    })
+  })
+
+/*
+ * View the list of ignored GitHub users
+ */
+program.command('ignorelist-show')
+  .description('View the approved list')
+  .action(() => {
+    if(ignoreList.length === 0) {
+      console.log(`${colors.MAGENTA}No users in ignored list${colors.CLEAR}`)
+      return
+    }
+    ignoreList.forEach(user => {
+      console.log(`${colors.MAGENTA}${user}${colors.CLEAR}`)
+    })
   })
 
 program.showHelpAfterError()
