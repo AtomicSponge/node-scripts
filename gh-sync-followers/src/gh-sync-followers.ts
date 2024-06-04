@@ -18,6 +18,7 @@ const colors = {
   GREEN:  `\x1b[32m`,
   MAGENTA: `\x1b[35m`,
   CYAN:   `\x1b[36m`,
+  YELLOW: `\x1b[93m`,
   CLEAR:  `\x1b[0m`
 }
 
@@ -212,6 +213,7 @@ program.command('approvelist-show')
       console.log(`${colors.MAGENTA}No users in approved list${colors.CLEAR}`)
       return
     }
+    console.log(`${colors.YELLOW}Approved List${colors.CLEAR}`)
     approveList.forEach(user => {
       console.log(`${colors.MAGENTA}${user}${colors.CLEAR}`)
     })
@@ -227,6 +229,7 @@ program.command('ignorelist-show')
       console.log(`${colors.MAGENTA}No users in ignored list${colors.CLEAR}`)
       return
     }
+    console.log(`${colors.YELLOW}Ignored List${colors.CLEAR}`)
     ignoreList.forEach(user => {
       console.log(`${colors.MAGENTA}${user}${colors.CLEAR}`)
     })
