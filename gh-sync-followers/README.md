@@ -19,6 +19,8 @@ Once GitHub CLI is set up run:
 npx gh-sync-followers
 ```
 
+The script will create a configuration file located in your operating system's local app storage.  This location is determined using the [os-appdata-path](https://www.npmjs.com/package/@spongex/os-appdata-path) module.
+
 ## Approvelist & Ignorelist
 
 To add a user or a list of users to the approved list, enter:
