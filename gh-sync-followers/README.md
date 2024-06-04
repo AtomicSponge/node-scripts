@@ -23,46 +23,46 @@ The script will create a configuration file located in your operating system's l
 
 ## Approvelist & Ignorelist
 
-To add a user or a list of users to the approved list, enter:
+__To add a user or a list of users to the approved list, enter:__
 
 ```
 npx gh-sync-followers approvelist <users...>
 ```
 
-To add a user or a list of users to the ignored list, enter:
+__To add a user or a list of users to the ignored list, enter:__
 
 ```
 npx gh-sync-followers ignorelist <users...>
 ```
 
-To remove a user or group of users from the approved list, enter:
+__To remove a user or group of users from the approved list, enter:__
 
 ```
 npx gh-sync-followers approvelist-remove <users...>
 ```
 
-To remove a user or group of users from the ignored list, enter:
+__To remove a user or group of users from the ignored list, enter:__
 
 ```
 npx gh-sync-followers ignorelist-remove <users...>
 ```
 
-Examples:
-```
-npx gh-sync-followers approvelist AtomicSponge otheruser
-```
-
-```
-npx gh-sync-followers ignorelist-remove AtomicSponge
-```
-
-To view either the approved or ignored lists, enter:
+__To view either the approved or ignored lists, enter:__
 ```
 npx gh-sync-followers approvelist-show
 ```
 
 ```
 npx gh-sync-followers ignorelist-show
+```
+
+### Examples:
+```
+npx gh-sync-followers approvelist AtomicSponge otheruser
+```
+
+```
+npx gh-sync-followers ignorelist-remove AtomicSponge
 ```
 
 # Changelog
