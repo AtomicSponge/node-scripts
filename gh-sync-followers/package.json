@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomicSponge/node-scripts.git",
-    "directory": "gh_sync_followers"
+    "directory": "gh-sync-followers"
   },
   "url": "https://www.npmjs.com/package/@spongex/gh-sync-followers",
   "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
@@ -28,19 +28,14 @@
     "gh-sync-followers": "dist/gh-sync-followers.js"
   },
   "type": "module",
-  "tsup": {
-    "entry": [
-      "./src/gh-sync-followers.ts"
-    ],
-    "format": "esm",
-    "sourcemap": false,
-    "clean": true
-  },
   "files": [
     "./dist",
     "LICENSE.md",
     "README.md"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "@spongex/os-appdata-path": "^0.2.1",
     "@spongex/script-error": "^1.0.0",

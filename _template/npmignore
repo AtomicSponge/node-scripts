@@ -5,3 +5,4 @@ src
 
 package-lock.json
 tsconfig.json
+tsup.config.ts
