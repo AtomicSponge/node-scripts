@@ -104,7 +104,8 @@ program
     console.log(`Adding followers...`)
     addFollowers.forEach((follower:{login:string}) => {
       try {
-        execSync(`${exeCmd} --method PUT ${apiHeaders} /user/following/${follower.login}`)
+        if(!ignoreList.includes(follower.login))
+          execSync(`${exeCmd} --method PUT ${apiHeaders} /user/following/${follower.login}`)
       } catch(error:any) { scriptError(error.message, { exit: false }) }
     })
     console.log(`Added ${colors.CYAN}${addFollowers.length}${colors.CLEAR} new followers!`)
@@ -113,7 +114,8 @@ program
     console.log(`Removing unfollowers...`)
     removeFollowers.forEach((following:{login:string}) => {
       try {
-        execSync(`${exeCmd} --method DELETE ${apiHeaders} /user/following/${following.login}`)
+        if(!approveList.includes(following.login))
+          execSync(`${exeCmd} --method DELETE ${apiHeaders} /user/following/${following.login}`)
       } catch(error:any) { scriptError(error.message, { exit: false }) }
     })
     console.log(`Removed ${colors.CYAN}${removeFollowers.length}${colors.CLEAR} unfollowers!`)
@@ -130,6 +132,7 @@ program.command('approvelist')
     approveList = approveList.filter((val, idx, arr) => {
       return arr.indexOf(val) === idx
     })
+    console.log(`Added '${users}' to the approved list`)
 
     try {
       saveListData()
@@ -149,6 +152,7 @@ program.command('ignorelist')
     ignoreList = ignoreList.filter((val, idx, arr) => {
       return arr.indexOf(val) === idx
     })
+    console.log(`Added '${users}' to the ignored list`)
 
     try {
       saveListData()
@@ -168,6 +172,7 @@ program.command('approvelist-remove')
       const idx = approveList.indexOf(user)
       if (idx > -1) approveList.splice(idx, 1)
     })
+    console.log(`Removed '${users}' from the approved list`)
 
     try {
       saveListData()
@@ -184,9 +189,10 @@ program.command('ignorelist-remove')
   .argument('<users...>', 'One or more GitHub usernames to remove')
   .action((users) => {
     users.forEach((user:string) => {
-      const idx = approveList.indexOf(user)
-      if (idx > -1) approveList.splice(idx, 1)
+      const idx = ignoreList.indexOf(user)
+      if (idx > -1) ignoreList.splice(idx, 1)
     })
+    console.log(`Removed '${users}' from the ignored list`)
 
     try {
       saveListData()
