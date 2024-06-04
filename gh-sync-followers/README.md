@@ -19,7 +19,7 @@ Once GitHub CLI is set up run:
 npx gh-sync-followers
 ```
 
-## Whitelist & Blacklist
+## Approvelist & Ignorelist
 
 # Changelog
 
@@ -30,3 +30,6 @@ npx gh-sync-followers
 ## 1.0.1
 - Bump packages and relocated project on GitHub
 - Updated project name to proper NPM formatting
+
+## 1.0.0
+ - Initial release
