@@ -76,6 +76,7 @@ program
   .name('gh-sync-followers')
   .summary('Sync your GitHub followers!')
   .description('Run this command without any arguments to perform a sync of your GitHub followers')
+  .version('1.1.0')
   .action(async () => {
     const exeCmd = `gh api`
     const apiHeaders = 

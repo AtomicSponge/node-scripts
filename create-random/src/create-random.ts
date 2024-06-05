@@ -19,6 +19,7 @@ const program = new Command()
 program
   .name('create-random')
   .description('Generate random data')
+  .version('1.0.0')
 
   //  Generate random numbers
   program.command('numbers')
