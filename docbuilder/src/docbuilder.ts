@@ -113,7 +113,7 @@ interface cmdRes {
     })
   })
   //  Collect the promises and return once all complete
-  let jobPromises:Array<Promise<any>> = []
+  let jobPromises:Array<Promise<job>> = []
   runningJobs.forEach(job => { jobPromises.push(job.promise) })
   return await Promise.allSettled(jobPromises)
 }
@@ -143,7 +143,9 @@ if(!settings['nologging']) {
   //  Remove old log file
   try {
     fs.unlinkSync(path.join(process.cwd(), constants.LOG_FILE))
-  } catch (error) {}
+  } catch (error:any) {
+    scriptError(`Unable to remove old log file!  Verify you have write access`)
+  }
   writeLog(`Documentation Generation Script Log File\n\n`)
 }
 
@@ -152,7 +154,9 @@ if(settings['removeold']) {
   try {
     fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
       {recursive: true, force: true})
-  } catch (error) {}
+  } catch (error:any) {
+    scriptError(`Unable to remove old documentation folder!  Verify you have write access`)
+  }
 }
 verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
 
@@ -177,7 +181,7 @@ jobRunner(settings['jobs'], "",
   }
 ).then(jobResults => {
   let goodRes = jobResults.length
-  jobResults.forEach(job => {if(job.status == 'rejected') goodRes-- })
+  jobResults.forEach(job => {if(job.status === 'rejected') goodRes-- })
   if(!settings['nologging']) {
     writeLog(logRes + `--------------------------------------------------\n\n`)
     writeLog(`${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toString()}`)
@@ -185,3 +189,4 @@ jobRunner(settings['jobs'], "",
   console.log(`\n${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toString()}`)
   console.log(green(`Done!\n`))
 })
+process.exit(0)
