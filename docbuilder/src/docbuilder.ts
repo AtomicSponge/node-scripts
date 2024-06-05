@@ -65,7 +65,7 @@ const verifyFolder = (folder:string) => {
   }
 }
 
-//  Job interface
+/** Job properties */
 interface job {
   name:string           /** Name of job */
   generator:string      /** Document generator to use */
@@ -75,10 +75,10 @@ interface job {
   removeold?:boolean    /** Remove per-job documentation folder */
 }
 
-//  Command resolution interface
+/** Resolution of a job command */
 interface cmdRes {
   name:string     /** Name of process */
-  command:string  /** Command ran */
+  command:string  /** Command ran by a job */
   code:number     /** Status code */
   stdout:string   /** stdout buffer */
   stderr:string   /** stderr buffer */
