@@ -113,7 +113,10 @@ interface cmdRes {
         runningJobs[jobIDX].resolve(cmdRes)
 
         //  Copy over the data to the OUTPUT_FOLDER
-        fs.cpSync(path.join(job['path'], job['out']), path.join(process.cwd(), constants.OUTPUT_FOLDER), { recursive:true })
+        fs.cpSync(
+          path.join(job['path'], job['out']),
+          path.join(process.cwd(), constants.OUTPUT_FOLDER),
+          { recursive:true })
 
         //  Remove old data if configured
         if(job.hasOwnProperty('removeold') && job['removeold']) {
