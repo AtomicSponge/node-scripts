@@ -12,6 +12,7 @@ import { exec } from 'node:child_process'
 
 import { red, green, yellow, cyan, dim } from 'kolorist'
 
+import { __locale } from '@spongex/system-locale'
 import { AsyncResolver } from '@spongex/async-resolver'
 import { scriptError } from '@spongex/script-error'
 
@@ -166,7 +167,7 @@ verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
 
 let logRes = ""
 console.log(`Running jobs, please wait...`)
-jobRunner(settings['jobs'], "",
+await jobRunner(settings['jobs'], "",
   (job:job) => {
     if(job['checkfolder'])
       verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job['name']))
@@ -188,9 +189,9 @@ jobRunner(settings['jobs'], "",
   jobResults.forEach(job => {if(job.status === 'rejected') goodRes-- })
   if(!settings['nologging']) {
     writeLog(logRes + `--------------------------------------------------\n\n`)
-    writeLog(`${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toString()}`)
+    writeLog(`${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toLocaleString(__locale)}`)
   }
-  console.log(`\n${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toString()}`)
+  console.log(`\n${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toLocaleString(__locale)}`)
   console.log(green(`Done!\n`))
 })
 process.exit(0)
