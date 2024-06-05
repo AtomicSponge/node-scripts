@@ -116,6 +116,7 @@ interface cmdRes {
     const run_command = splicer(job, command)
     exec(run_command, { cwd: path.normalize(job['path']) }, (error:any, stdout:string, stderr:string) => {
       let cmdRes:cmdRes
+      //  Command resulted in error, reject the job
       if(error) {
         cmdRes = { name: job['name'], command: run_command,
                    code: error.code, stdout: stdout, stderr: stderr }
