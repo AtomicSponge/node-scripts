@@ -137,10 +137,10 @@ settings['jobs'].forEach((job:job) => {
 })
 
 //  Override constants if any are defined in settings
-if (settings.hasOwnProperty('LOG_FILE'))
-  constants.LOG_FILE = settings['LOG_FILE']
-if (settings.hasOwnProperty('OUTPUT_FOLDER'))
-  constants.OUTPUT_FOLDER = settings['OUTPUT_FOLDER']
+if (settings.hasOwnProperty('log_file'))
+  constants.LOG_FILE = settings['log_file']
+if (settings.hasOwnProperty('output_folder'))
+  constants.OUTPUT_FOLDER = settings['output_folder']
 
 //  If nologging is defined in settings, skip logging
 if (!settings['nologging']) {

@@ -77,8 +77,8 @@ The following variables can be used:
 - `$OUTPUT_FOLDER` - The name of the output folder from settings.
 
 ## Optional Global Settings:
-- `"LOG_FILE": "filename"` - Change the filename of the log file.
-- `"OUTPUT_FOLDER": "foldername"` - Change the output folder name. (default docs)
+- `"log_file": "filename"` - Change the filename of the log file.
+- `"output_folder": "foldername"` - Change the output folder name. (default docs)
 - `"nologging": "nologging"` - Disable logging.
 - `"removeold": "true"` - Delete the old documentation folder before generation.
 
