@@ -12,6 +12,7 @@ import { exec } from 'node:child_process'
 
 import { red, green, yellow, cyan, dim } from 'kolorist'
 
+import { AsyncResolver } from '@spongex/async-resolver'
 import { scriptError } from '@spongex/script-error'
 
 /**
@@ -103,23 +104,10 @@ interface cmdRes {
  const jobRunner = async (jobs:Array<job>, command:string, splicer:Function, callback:Function) => {
   splicer = splicer || (() => { return command })
   callback = callback || (() => {})
-  //  Wrapper class for promises
-  class Resolver {
-    promise
-    reject:Function = () => {}
-    resolve:Function = () => {}
-
-    constructor() {
-      this.promise = new Promise((resolve, reject) => {
-        this.reject = reject
-        this.resolve = resolve
-      })
-    }
-  }
   //  Run all the jobs, resolve/reject promise once done
-  let runningJobs:Array<Resolver> = []
+  let runningJobs:Array<AsyncResolver> = []
   jobs.forEach(job => {
-    runningJobs.push(new Resolver())
+    runningJobs.push(new AsyncResolver())
     const jobIDX = runningJobs.length - 1
     const run_command = splicer(job, command)
     exec(run_command, (error:any, stdout:string, stderr:string) => {
