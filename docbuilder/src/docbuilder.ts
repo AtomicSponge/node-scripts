@@ -70,7 +70,8 @@ interface job {
   name:string           /** Name of job */
   generator:string      /** Document generator to use */
   path:string           /** Path to process */
-  checkfolder?:boolean  /** Check */
+  checkfolder?:boolean  /** Check if folder exists */
+  removeold?:boolean    /** Remove per-job documentation folder */
 }
 
 //  Command resolution interface
@@ -111,7 +112,10 @@ interface cmdRes {
         runningJobs[jobIDX].resolve(cmdRes)
 
         /* copy data */
-        if(job.hasOwnProperty(''))
+        //  Remove old data if configured
+        if(job.hasOwnProperty('removeold') && job['removeold']) {
+          //
+        }
       }
       callback(error, cmdRes)
     })
