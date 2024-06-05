@@ -76,12 +76,14 @@ The following variables can be used:
 - `$PROJECT_LOCATION` - The full path to the project.
 - `$OUTPUT_FOLDER` - The name of the output folder from settings.
 
-## Optional Settings:
+## Optional Global Settings:
 - `"LOG_FILE": "filename"` - Change the filename of the log file.
 - `"OUTPUT_FOLDER": "foldername"` - Change the output folder name. (default docs)
 - `"nologging": "nologging"` - Disable logging.
 - `"removeold": "true"` - Delete the old documentation folder before generation.
-- `"checkfolder": "true"` - Per-job setting to verify folder exists before generating docs.
+
+## Optional Job Settings:
+- `"checkfolder": "true"` - Verify folder exists before generating docs.
 
 # Changelog
 

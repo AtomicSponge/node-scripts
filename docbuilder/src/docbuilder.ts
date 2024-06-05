@@ -34,7 +34,7 @@ const loadSettings = () => {
   try {
     const settings = fs.readFileSync(path.join(process.cwd(), constants.SETTINGS_FILE))
     return JSON.parse(settings.toString())
-  } catch (error) {
+  } catch (error:any) {
     scriptError(`Can't find a local '${constants.SETTINGS_FILE}' configuration file.`)
   }
 }
@@ -127,18 +127,20 @@ console.log(cyan(`Documentation Generation Script\n`))
 const settings = loadSettings()
 
 //  Verify settings format
-if(settings['generators'] === undefined) scriptError('Must define documentation generators to run.')
+if (!settings.hasOwnProperty('generators')) scriptError('Must define documentation generators to run.')
 settings['jobs'].forEach((job:job) => {
-  if(job['name'] === undefined || job['generator'] === undefined || job['path'] === undefined)
+  if (!job.hasOwnProperty('name') ||
+      !job.hasOwnProperty('generator') ||
+      !job.hasOwnProperty('path'))
     scriptError(`Invalid job format.`)
 })
 
 //  Override constants if any are defined in settings
-if(settings['LOG_FILE'] !== undefined) constants.LOG_FILE = settings['LOG_FILE']
-if(settings['OUTPUT_FOLDER'] !== undefined) constants.OUTPUT_FOLDER = settings['OUTPUT_FOLDER']
+if (settings['LOG_FILE'] !== undefined) constants.LOG_FILE = settings['LOG_FILE']
+if (settings['OUTPUT_FOLDER'] !== undefined) constants.OUTPUT_FOLDER = settings['OUTPUT_FOLDER']
 
 //  If nologging is defined in settings, skip logging
-if(!settings['nologging']) {
+if (!settings['nologging']) {
   console.log(dim(yellow(`Logging output to '${constants.LOG_FILE}'...`)))
 
   //  Remove old log file
@@ -153,8 +155,8 @@ if(!settings['nologging']) {
 }
 
 //  Remove old documentation folder if defined in settings
-if(settings['removeold']) {
-  if(fs.existsSync(path.join(process.cwd(), constants.OUTPUT_FOLDER))) {
+if (settings['removeold']) {
+  if (fs.existsSync(path.join(process.cwd(), constants.OUTPUT_FOLDER))) {
     try {
       fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
         {recursive: true, force: true})
@@ -169,7 +171,7 @@ let logRes = ""
 console.log(`Running jobs, please wait...`)
 await jobRunner(settings['jobs'], "",
   (job:job) => {
-    if(job['checkfolder'])
+    if (job['checkfolder'])
       verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job['name']))
     let runCmd = settings['generators'][job['generator']]
     runCmd = runCmd.replaceAll('$PROJECT_LOCATION', job['path'])
@@ -181,7 +183,7 @@ await jobRunner(settings['jobs'], "",
     logRes += `--------------------------------------------------\n` +
       `Job: ${cmdRes.name}\n--------------------------------------------------\n` +
       `Command: ${cmdRes.command}\nReturn code: ${cmdRes.code}\n\nOutput:\n${cmdRes.stdout}\nErrors:\n${cmdRes.stderr}\n\n`
-    if(error)
+    if (error)
       console.log(red(`\nWARNING:  Problems running job '${cmdRes.name}' see log for details...`))
   }
 ).then(jobResults => {
