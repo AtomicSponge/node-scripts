@@ -25,7 +25,7 @@ Inside the directory you wish to generate the documentation in, create a `.docbu
 {
     "generators": {
         "doxygen": "doxygen .doxyfile",
-        "jdoc": "npx jsdoc -d $OUTPUT_FOLDER/$PROJECT $PROJECT.js"
+        "typedoc": "npx typedoc"
     },
     "jobs": [
         {
@@ -41,20 +41,8 @@ Inside the directory you wish to generate the documentation in, create a `.docbu
             "checkfolder": "true"
         },
         {
-            "name": "libwtf",
-            "generator": "doxygen",
-            "path": "/home/matthew/Projects/libwtf",
-            "checkfolder": "true"
-        },
-        {
-            "name": "http_session_auth",
-            "generator": "doxygen",
-            "path": "/home/matthew/Projects/http_session_auth",
-            "checkfolder": "true"
-        },
-        {
             "name": "wtgui",
-            "generator": "jdoc",
+            "generator": "typedoc",
             "path": "/home/matthew/Projects/wtgui"
         }
     ]
@@ -82,10 +70,10 @@ The following variables can be used:
 - `"log_file": "filename"` - Change the filename of the log file.
 - `"output_folder": "foldername"` - Change the output directory name. (default docs)
 - `"nologging": "nologging"` - Disable logging.
-- `"removeold": "true"` - Delete the old documentation directory before generation.
 
 ## Optional Job Settings:
 - `"checkfolder": "true"` - Verify directory exists before generating docs.
+- `"removeold": "true"` - Delete the old documentation directory after generation.
 
 # Changelog
 

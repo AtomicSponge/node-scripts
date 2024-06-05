@@ -109,6 +109,9 @@ interface cmdRes {
         cmdRes = { name: job['name'], command: run_command,
                    code: 0, stdout: stdout, stderr: stderr }
         runningJobs[jobIDX].resolve(cmdRes)
+
+        /* copy data */
+        if(job.hasOwnProperty(''))
       }
       callback(error, cmdRes)
     })
@@ -157,15 +160,13 @@ if (!settings['nologging']) {
   writeLog(`Documentation Generation Script Log File\n\n`)
 }
 
-//  Remove old documentation folder if defined in settings
-if (settings['removeold']) {
-  if (fs.existsSync(path.join(process.cwd(), constants.OUTPUT_FOLDER))) {
-    try {
-      fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
-        {recursive: true, force: true})
-    } catch (error:any) {
-      scriptError(`Unable to remove old documentation folder!  Verify you have write access`)
-    }
+//  Remove old output documentation folder
+if (fs.existsSync(path.join(process.cwd(), constants.OUTPUT_FOLDER))) {
+  try {
+    fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
+      {recursive: true, force: true})
+  } catch (error:any) {
+    scriptError(`Unable to remove old documentation folder!  Verify you have write access`)
   }
 }
 verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
