@@ -99,7 +99,7 @@ interface cmdRes {
     runningJobs.push(new AsyncResolver())
     const jobIDX = runningJobs.length - 1
     const run_command = splicer(job, command)
-    exec(run_command, (error:any, stdout:string, stderr:string) => {
+    exec(run_command, { cwd: path.normalize(job['path']) }, (error:any, stdout:string, stderr:string) => {
       let cmdRes:cmdRes
       if(error) {
         cmdRes = { name: job['name'], command: run_command,

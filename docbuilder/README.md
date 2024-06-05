@@ -24,7 +24,7 @@ Inside the folder you wish to generate the documentation in, create a __.docbuil
 ```
 {
     "generators": {
-        "doxygen": "doxygen \"$(find $PROJECT_LOCATION -maxdepth 1 -type f -name *.doxyfile)\"",
+        "doxygen": "doxygen $PROJECT_LOCATION",
         "jdoc": "npx jsdoc -d $OUTPUT_FOLDER/$PROJECT $PROJECT_LOCATION/$PROJECT.js"
     },
     "jobs": [
