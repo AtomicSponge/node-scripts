@@ -16,18 +16,6 @@ import { AsyncResolver } from '@spongex/async-resolver'
 import { scriptError } from '@spongex/script-error'
 
 /**
- * Font colors
- */
-const colors = {
-  RED:    `\x1b[31m`,
-  GREEN:  `\x1b[32m`,
-  YELLOW: `\x1b[33m`,
-  CYAN:   `\x1b[36m`,
-  DIM:    `\x1b[2m`,
-  CLEAR:  `\x1b[0m`
-}
-
-/**
  * Constants
  */
 const constants = {
@@ -105,13 +93,13 @@ interface cmdRes {
   splicer = splicer || (() => { return command })
   callback = callback || (() => {})
   //  Run all the jobs, resolve/reject promise once done
-  let runningJobs:Array<AsyncResolver> = []
+  const runningJobs:Array<AsyncResolver> = []
   jobs.forEach(job => {
     runningJobs.push(new AsyncResolver())
     const jobIDX = runningJobs.length - 1
     const run_command = splicer(job, command)
     exec(run_command, (error:any, stdout:string, stderr:string) => {
-      let cmdRes = null
+      let cmdRes:cmdRes
       if(error) {
         cmdRes = { name: job['name'], command: run_command,
                    code: error.code, stdout: stdout, stderr: stderr }
