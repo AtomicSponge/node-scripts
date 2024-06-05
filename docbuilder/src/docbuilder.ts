@@ -141,21 +141,25 @@ if(!settings['nologging']) {
   console.log(dim(yellow(`Logging output to '${constants.LOG_FILE}'...`)))
 
   //  Remove old log file
-  try {
-    fs.unlinkSync(path.join(process.cwd(), constants.LOG_FILE))
-  } catch (error:any) {
-    scriptError(`Unable to remove old log file!  Verify you have write access`)
+  if(fs.existsSync(path.join(process.cwd(), constants.LOG_FILE))) {
+    try {
+      fs.unlinkSync(path.join(process.cwd(), constants.LOG_FILE))
+    } catch (error:any) {
+      scriptError(`Unable to remove old log file!  Verify you have write access`)
+    }
   }
   writeLog(`Documentation Generation Script Log File\n\n`)
 }
 
 //  Remove old documentation folder if defined in settings
 if(settings['removeold']) {
-  try {
-    fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
-      {recursive: true, force: true})
-  } catch (error:any) {
-    scriptError(`Unable to remove old documentation folder!  Verify you have write access`)
+  if(fs.existsSync(path.join(process.cwd(), constants.OUTPUT_FOLDER))) {
+    try {
+      fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
+        {recursive: true, force: true})
+    } catch (error:any) {
+      scriptError(`Unable to remove old documentation folder!  Verify you have write access`)
+    }
   }
 }
 verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
