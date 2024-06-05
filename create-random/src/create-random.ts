@@ -20,6 +20,7 @@ program
   .name('create-random')
   .description('Generate random data')
 
+  //  Generate random numbers
   program.command('numbers')
   .description('Generate random numbers')
   .argument('<amount>', 'Amount of numbers to generate')
@@ -32,24 +33,53 @@ program
     console.log(`${colors.YELLOW}${res.join('')}${colors.CLEAR}`)
   })
 
+  //  Generate random letters
   program.command('letters')
   .description('Generate random letters')
   .argument('<amount>', 'Amount of letters to generate')
   .action((amount) => {
     if(amount >= 2**31) scriptError('Amount is too large!')
-    const res = 'out'
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    const res = Array.from(crypto.randomFillSync(new Uint32Array(amount)))
+      .map((x) => chars[x % chars.length])
+      .join('')
     console.log(`${colors.YELLOW}${res}${colors.CLEAR}`)
   })
 
+  //  Generate random numbers & letters
   program.command('alphanum')
   .description('Generate random numbers and letters')
   .argument('<amount>', 'Amount of numbers and letters generate')
   .action((amount) => {
     if(amount >= 2**31) scriptError('Amount is too large!')
-    const res = 'out'
-    console.log(`${colors.YELLOW}${res}${colors.CLEAR}`)
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    const res_a = Array.from(crypto.randomFillSync(new Uint32Array(Math.floor(amount / 2))))
+      .map((x) => chars[x % chars.length])
+      .join('')
+    const res_b:Array<number> = []
+      for (let i = 0; i < Math.round(amount / 2); i++) {
+        res_b.push(crypto.randomInt(0, 9))
+      }
+
+    /**
+     * Merge any number of arrays together
+     * @param arrays Any number of arrays to merge
+     * @returns Merged array
+     */
+    const braidArrays = (...arrays:Array<any>) => {
+      const braided:Array<any> = [];
+      for (let i = 0; i < Math.max(...arrays.map(a => a.length)); i++) {
+        arrays.forEach((array) => {
+          if (array[i] !== undefined) braided.push(array[i]);
+        });
+      }
+      return braided;
+    }
+    const res = braidArrays(res_a, res_b)
+    console.log(`${colors.YELLOW}${res.join('')}${colors.CLEAR}`)
   })
 
+  //  Generate random hex
   program.command('hex')
   .description('Generate random hex values')
   .argument('<amount>', 'Amount of hex values to generate')
