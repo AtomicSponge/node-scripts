@@ -4,8 +4,6 @@ Run multiple document generators for multiple projects with one command.  Then m
 
 __Performs command injection, use at your own risk!  Please read documentation before use!__
 
-See [NodeJS's documentation](https://nodejs.org/api/child_process.html#child_processexeccommand-options-callback) on [exec](https://nodejs.org/api/child_process.html#child_processexeccommand-options-callback) for more information on how commands work.
-
 Requires the use of third party documentation generators such as [Doxygen](https://www.doxygen.nl/index.html), [JSDoc](https://jsdoc.app/) or [Typedoc](https://typedoc.org/).
 
 Install globally:
