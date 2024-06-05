@@ -32,18 +32,21 @@ Inside the directory you wish to generate the documentation in, create a `.docbu
             "name": "wtengine",
             "generator": "doxygen",
             "path": "/home/matthew/Projects/wtengine",
+            "out": "docs",
             "checkfolder": "true"
         },
         {
             "name": "ppms",
             "generator": "doxygen",
             "path": "/home/matthew/Projects/ppms",
+            "out": "docs",
             "checkfolder": "true"
         },
         {
             "name": "wtgui",
             "generator": "typedoc",
-            "path": "/home/matthew/Projects/wtgui"
+            "path": "/home/matthew/Projects/wtgui",
+            "out": "docs"
         }
     ]
 }
