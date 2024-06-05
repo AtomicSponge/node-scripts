@@ -117,13 +117,13 @@ interface cmdRes {
     }
   }
   //  Run all the jobs, resolve/reject promise once done
-  var runningJobs:Array<Resolver> = []
+  let runningJobs:Array<Resolver> = []
   jobs.forEach(job => {
     runningJobs.push(new Resolver())
     const jobIDX = runningJobs.length - 1
     const run_command = splicer(job, command)
     exec(run_command, (error:any, stdout:string, stderr:string) => {
-      var cmdRes = null
+      let cmdRes = null
       if(error) {
         cmdRes = { name: job['name'], command: run_command,
                    code: error.code, stdout: stdout, stderr: stderr }
@@ -137,7 +137,7 @@ interface cmdRes {
     })
   })
   //  Collect the promises and return once all complete
-  var jobPromises:Array<Promise<any>> = []
+  let jobPromises:Array<Promise<any>> = []
   runningJobs.forEach(job => { jobPromises.push(job.promise) })
   return await Promise.allSettled(jobPromises)
 }
@@ -180,13 +180,13 @@ if(settings['removeold']) {
 }
 verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
 
-var logRes = ""
+let logRes = ""
 console.log(`Running jobs, please wait...`)
 jobRunner(settings['jobs'], "",
   (job:job) => {
     if(job['checkfolder'])
       verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job['name']))
-    var runCmd = settings['generators'][job['generator']]
+    let runCmd = settings['generators'][job['generator']]
     runCmd = runCmd.replaceAll('$PROJECT_LOCATION', job['path'])
     runCmd = runCmd.replaceAll('$PROJECT', job['name'])
     runCmd = runCmd.replaceAll('$OUTPUT_FOLDER', constants.OUTPUT_FOLDER)
@@ -197,16 +197,15 @@ jobRunner(settings['jobs'], "",
       `Job: ${cmdRes.name}\n--------------------------------------------------\n` +
       `Command: ${cmdRes.command}\nReturn code: ${cmdRes.code}\n\nOutput:\n${cmdRes.stdout}\nErrors:\n${cmdRes.stderr}\n\n`
     if(error)
-      console.log(`\n${colors.RED}WARNING:  Problems running job '${cmdRes.name}' ` +
-        `see log for details...${colors.CLEAR}`)
+      console.log(red(`\nWARNING:  Problems running job '${cmdRes.name}' see log for details...`))
   }
 ).then(jobResults => {
-  var goodRes = jobResults.length
+  let goodRes = jobResults.length
   jobResults.forEach(job => {if(job.status == 'rejected') goodRes-- })
   if(!settings['nologging']) {
     writeLog(logRes + `--------------------------------------------------\n\n`)
     writeLog(`${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toString()}`)
   }
   console.log(`\n${goodRes} of ${jobResults.length} jobs completed successfully at ${new Date().toString()}`)
-  console.log(`${colors.GREEN}Done!${colors.CLEAR}\n`)
+  console.log(green(`Done!\n`))
 })
