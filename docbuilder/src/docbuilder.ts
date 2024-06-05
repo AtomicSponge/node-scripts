@@ -110,7 +110,6 @@ interface cmdRes {
       } else {
         cmdRes = { name: job['name'], command: run_command,
                    code: 0, stdout: stdout, stderr: stderr }
-        runningJobs[jobIDX].resolve(cmdRes)
 
         //  Copy over the data to the OUTPUT_FOLDER
         fs.cpSync(
@@ -127,6 +126,8 @@ interface cmdRes {
             } catch (error:any) {}
           }
         }
+
+        runningJobs[jobIDX].resolve(cmdRes)
       }
       callback(error, cmdRes)
     })

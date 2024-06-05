@@ -1,6 +1,6 @@
 # Docbuilder NodeJS Script
 
-Run multiple document generators for multiple projects with one command.  Then merge them all into a single directory!
+Run multiple document generators for multiple projects with one command simultaneously.  Then merge them all into a single directory!
 
 __Performs command injection, use at your own risk!  Please read documentation before use!__
 
