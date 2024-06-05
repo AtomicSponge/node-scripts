@@ -204,7 +204,7 @@ verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
 
 let logRes = ""
 console.log(`Running jobs, please wait...`)
-await jobRunner(settings['jobs'], "",
+await jobRunner(settings['jobs'], '',
   (job:job) => {
     if (job['checkfolder'])
       verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job['name']))
