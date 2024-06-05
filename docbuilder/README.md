@@ -20,12 +20,12 @@ npm i -D @spongex/docbuilder
 
 ## Usage
 
-Inside the folder you wish to generate the documentation in, create a __.docbuilder_config.json__ file with the following format:
+Inside the folder you wish to generate the documentation in, create a `.docbuilder.config.json` file with the following format:
 ```
 {
     "generators": {
         "doxygen": "doxygen $PROJECT_LOCATION",
-        "jdoc": "npx jsdoc -d $OUTPUT_FOLDER/$PROJECT $PROJECT_LOCATION/$PROJECT.js"
+        "jdoc": "npx jsdoc -d $OUTPUT_FOLDER/$PROJECT $PROJECT.js"
     },
     "jobs": [
         {
@@ -66,22 +66,22 @@ Then just run the script in the output folder:
 npx docbuilder
 ```
 
-A __.docbuilder.log__ file will be created with the results of each job.
+A `.docbuilder.log` file will be created with the results of each job.
 
 ## Generators
 These are system commands used to launch each different document generator.
 
 The following variables can be used:
-- __$PROJECT__ - The name of the project.
-- __$PROJECT_LOCATION__ - The full path to the project.
-- __$OUTPUT_FOLDER__ - The name of the output folder from settings.
+- `$PROJECT` - The name of the project.
+- `$PROJECT_LOCATION` - The full path to the project.
+- `$OUTPUT_FOLDER` - The name of the output folder from settings.
 
 ## Optional Settings:
-- __"LOG_FILE": "filename"__ - Change the filename of the log file.
-- __"OUTPUT_FOLDER": "foldername"__ - Change the output folder name. (default docs)
-- __"nologging": "nologging"__ - Disable logging.
-- __"removeold": "true"__ - Delete the old documentation folder before generation.
-- __"checkfolder": "true"__ - Per-job setting to verify folder exists before generating docs.
+- `"LOG_FILE": "filename"` - Change the filename of the log file.
+- `"OUTPUT_FOLDER": "foldername"` - Change the output folder name. (default docs)
+- `"nologging": "nologging"` - Disable logging.
+- `"removeold": "true"` - Delete the old documentation folder before generation.
+- `"checkfolder": "true"` - Per-job setting to verify folder exists before generating docs.
 
 # Changelog
 
