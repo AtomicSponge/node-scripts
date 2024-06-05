@@ -67,13 +67,13 @@ program
      * @returns Merged array
      */
     const braidArrays = (...arrays:Array<any>) => {
-      const braided:Array<any> = [];
+      const braided:Array<any> = []
       for (let i = 0; i < Math.max(...arrays.map(a => a.length)); i++) {
         arrays.forEach((array) => {
-          if (array[i] !== undefined) braided.push(array[i]);
-        });
+          if (array[i] !== undefined) braided.push(array[i])
+        })
       }
-      return braided;
+      return braided
     }
     const res = braidArrays(res_a, res_b)
     console.log(`${colors.YELLOW}${res.join('')}${colors.CLEAR}`)
