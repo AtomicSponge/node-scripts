@@ -1,12 +1,12 @@
 # Docbuilder NodeJS Script
 
-Run multiple document generators for multiple projects with one command.
+Run multiple document generators for multiple projects with one command.  Then merge them all into a single directory!
 
-__Does heavy command injection, use at your own risk!__
+__Performs command injection, use at your own risk!  Please read documentation before use!__
 
 See [NodeJS's documentation](https://nodejs.org/api/child_process.html#child_processexeccommand-options-callback) on [exec](https://nodejs.org/api/child_process.html#child_processexeccommand-options-callback) for more information on how commands work.
 
-Requires the use of third party documentation generators such as [Doxygen](https://www.doxygen.nl/index.html) and [JSDoc](https://jsdoc.app/).
+Requires the use of third party documentation generators such as [Doxygen](https://www.doxygen.nl/index.html), [JSDoc](https://jsdoc.app/) or [Typedoc](https://typedoc.org/).
 
 Install globally:
 ```
@@ -23,34 +23,38 @@ npm i -D @spongex/docbuilder
 Inside the directory you wish to generate the documentation in, create a `.docbuilder.config.json` file with the following format:
 ```
 {
-    "generators": {
-        "doxygen": "doxygen .doxyfile",
-        "typedoc": "npx typedoc"
+  "generators": {
+      "doxygen": "doxygen .doxyfile",
+      "jsdoc": "npx jdsoc index.js",
+      "typedoc": "npx typedoc"
+  },
+  "jobs": [
+    {
+      "name": "wtengine",
+      "generator": "doxygen",
+      "path": "/home/matthew/Projects/wtengine",
+      "out": "docs",
+      "checkfolder": "true"
     },
-    "jobs": [
-        {
-            "name": "wtengine",
-            "generator": "doxygen",
-            "path": "/home/matthew/Projects/wtengine",
-            "out": "docs",
-            "checkfolder": "true"
-        },
-        {
-            "name": "ppms",
-            "generator": "doxygen",
-            "path": "/home/matthew/Projects/ppms",
-            "out": "docs",
-            "checkfolder": "true"
-        },
-        {
-            "name": "wtgui",
-            "generator": "typedoc",
-            "path": "/home/matthew/Projects/wtgui",
-            "out": "docs"
-        }
-    ]
+    {
+      "name": "ppms",
+      "generator": "doxygen",
+      "path": "/home/matthew/Projects/ppms",
+      "out": "docs",
+      "checkfolder": "true"
+    },
+    {
+      "name": "wtgui",
+      "generator": "typedoc",
+      "path": "/home/matthew/Projects/wtgui",
+      "out": "docs"
+    }
+  ],
+  "output_folder": "public/docs"
 }
 ```
+
+It is recommended to set the document generators to output to a directory named `docs/projectname` for proper merger.
 
 Then just run the script in the output directory:
 ```
@@ -81,7 +85,8 @@ The following variables can be used:
 # Changelog
 
 ## 2.1.0
-- Various improvements to script functionality
+- *NOTE* Changes in functionality that breaks previous versions
+- Various improvements to script functionality - see above
 - Dependencies bump
 
 ## 2.0.1
