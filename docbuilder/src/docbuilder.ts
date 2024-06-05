@@ -127,7 +127,8 @@ console.log(cyan(`Documentation Generation Script\n`))
 const settings = loadSettings()
 
 //  Verify settings format
-if (!settings.hasOwnProperty('generators')) scriptError('Must define documentation generators to run.')
+if (!settings.hasOwnProperty('generators'))
+  scriptError('Must define documentation generators to run.')
 settings['jobs'].forEach((job:job) => {
   if (!job.hasOwnProperty('name') ||
       !job.hasOwnProperty('generator') ||
@@ -136,8 +137,10 @@ settings['jobs'].forEach((job:job) => {
 })
 
 //  Override constants if any are defined in settings
-if (settings['LOG_FILE'] !== undefined) constants.LOG_FILE = settings['LOG_FILE']
-if (settings['OUTPUT_FOLDER'] !== undefined) constants.OUTPUT_FOLDER = settings['OUTPUT_FOLDER']
+if (settings.hasOwnProperty('LOG_FILE'))
+  constants.LOG_FILE = settings['LOG_FILE']
+if (settings.hasOwnProperty('OUTPUT_FOLDER'))
+  constants.OUTPUT_FOLDER = settings['OUTPUT_FOLDER']
 
 //  If nologging is defined in settings, skip logging
 if (!settings['nologging']) {
