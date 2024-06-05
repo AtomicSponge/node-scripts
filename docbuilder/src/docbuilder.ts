@@ -65,6 +65,19 @@ const verifyFolder = (folder:string) => {
   }
 }
 
+/**
+ * Delete a folder
+ * @param folder Folder path to delete
+ * @throws Nothing on error
+ */
+const deleteFolder = (folder:string) => {
+  if(fs.existsSync(folder)) {
+    try {
+      fs.rmSync(folder, {recursive: true, force: true})
+    } catch (error:any) {}
+  }
+}
+
 /** Job properties */
 interface job {
   name:string           /** Name of job */
@@ -112,20 +125,21 @@ interface cmdRes {
                    code: 0, stdout: stdout, stderr: stderr }
 
         //  Copy over the data to the OUTPUT_FOLDER
-        fs.cpSync(
-          path.join(job['path'], job['out']),
-          path.join(process.cwd(), constants.OUTPUT_FOLDER),
-          { recursive:true })
+        try {
+          fs.cpSync(
+            path.join(job['path'], job['out']),
+            path.join(process.cwd(), constants.OUTPUT_FOLDER),
+            { recursive:true })
+        } catch (error:any) {
+          //  Problems copying data, reject the job
+          deleteFolder(path.join(job['path'], job['out']))
+          cmdRes.stderr = error.message
+          runningJobs[jobIDX].reject(cmdRes)
+        }
 
         //  Remove old data if configured
-        if(job.hasOwnProperty('removeold') && job['removeold']) {
-          if(fs.existsSync(path.join(job['path'], job['out']))) {
-            try {
-              fs.rmSync(path.join(job['path'], job['out']),
-                {recursive: true, force: true})
-            } catch (error:any) {}
-          }
-        }
+        if(job.hasOwnProperty('removeold') && job['removeold'])
+          deleteFolder(path.join(job['path'], job['out']))
 
         runningJobs[jobIDX].resolve(cmdRes)
       }
