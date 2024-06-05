@@ -20,11 +20,11 @@ npm i -D @spongex/docbuilder
 
 ## Usage
 
-Inside the folder you wish to generate the documentation in, create a `.docbuilder.config.json` file with the following format:
+Inside the directory you wish to generate the documentation in, create a `.docbuilder.config.json` file with the following format:
 ```
 {
     "generators": {
-        "doxygen": "doxygen $PROJECT_LOCATION",
+        "doxygen": "doxygen .doxyfile",
         "jdoc": "npx jsdoc -d $OUTPUT_FOLDER/$PROJECT $PROJECT.js"
     },
     "jobs": [
@@ -61,12 +61,14 @@ Inside the folder you wish to generate the documentation in, create a `.docbuild
 }
 ```
 
-Then just run the script in the output folder:
+Then just run the script in the output directory:
 ```
 npx docbuilder
 ```
 
 A `.docbuilder.log` file will be created with the results of each job.
+
+The script works by running each generator locally in the project's directory, then combining the results into the current working directory.
 
 ## Generators
 These are system commands used to launch each different document generator.
@@ -74,21 +76,22 @@ These are system commands used to launch each different document generator.
 The following variables can be used:
 - `$PROJECT` - The name of the project.
 - `$PROJECT_LOCATION` - The full path to the project.
-- `$OUTPUT_FOLDER` - The name of the output folder from settings.
+- `$OUTPUT_FOLDER` - The name of the output directory from settings.
 
 ## Optional Global Settings:
 - `"log_file": "filename"` - Change the filename of the log file.
-- `"output_folder": "foldername"` - Change the output folder name. (default docs)
+- `"output_folder": "foldername"` - Change the output directory name. (default docs)
 - `"nologging": "nologging"` - Disable logging.
-- `"removeold": "true"` - Delete the old documentation folder before generation.
+- `"removeold": "true"` - Delete the old documentation directory before generation.
 
 ## Optional Job Settings:
-- `"checkfolder": "true"` - Verify folder exists before generating docs.
+- `"checkfolder": "true"` - Verify directory exists before generating docs.
 
 # Changelog
 
 ## 2.1.0
-- 
+- Various improvements to script functionality
+- Dependencies bump
 
 ## 2.0.1
 - Bump packages and relocated project on GitHub
