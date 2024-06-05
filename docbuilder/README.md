@@ -85,5 +85,8 @@ The following variables can be used:
 
 # Changelog
 
+## 2.1.0
+- 
+
 ## 2.0.1
 - Bump packages and relocated project on GitHub

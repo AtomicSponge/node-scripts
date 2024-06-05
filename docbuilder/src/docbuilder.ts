@@ -10,6 +10,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { exec } from 'node:child_process'
 
+import { red, green, yellow, cyan, dim } from 'kolorist'
+
 import { scriptError } from '@spongex/script-error'
 
 /**
@@ -28,7 +30,7 @@ const colors = {
  * Constants
  */
 const constants = {
-  SETTINGS_FILE: `.docbuilder_config.json`,
+  SETTINGS_FILE: `.docbuilder.config.json`,
   LOG_FILE: `.docbuilder.log`,
   OUTPUT_FOLDER: 'docs'
 }
@@ -40,7 +42,7 @@ const constants = {
  */
 const loadSettings = () => {
   try {
-    const settings = fs.readFileSync(path.normalize(`${process.cwd()}/${constants.SETTINGS_FILE}`))
+    const settings = fs.readFileSync(path.join(process.cwd(), constants.SETTINGS_FILE))
     return JSON.parse(settings.toString())
   } catch (error) {
     scriptError(`Can't find a local '${constants.SETTINGS_FILE}' configuration file.`)
@@ -54,7 +56,7 @@ const loadSettings = () => {
  */
 const writeLog = (message:string) => {
   try {
-    fs.appendFileSync(path.normalize(`${process.cwd()}/${constants.LOG_FILE}`), message)
+    fs.appendFileSync(path.normalize(path.join(process.cwd(), constants.LOG_FILE)), message)
   } catch (error:any) { scriptError(error.message) }
 }
 
@@ -143,7 +145,7 @@ interface cmdRes {
 /*
  * Main script
  */
-console.log(`${colors.CYAN}Documentation Generation Script${colors.CLEAR}\n`)
+console.log(cyan(`Documentation Generation Script\n`))
 
 const settings = loadSettings()
 
@@ -160,12 +162,11 @@ if(settings['OUTPUT_FOLDER'] !== undefined) constants.OUTPUT_FOLDER = settings['
 
 //  If nologging is defined in settings, skip logging
 if(!settings['nologging']) {
-  console.log(`${colors.DIM}${colors.YELLOW}Logging output to ` +
-    `'${constants.LOG_FILE}'...${colors.CLEAR}`)
+  console.log(dim(yellow(`Logging output to '${constants.LOG_FILE}'...`)))
 
   //  Remove old log file
   try {
-    fs.unlinkSync(path.normalize(`${process.cwd()}/${constants.LOG_FILE}`))
+    fs.unlinkSync(path.join(process.cwd(), constants.LOG_FILE))
   } catch (error) {}
   writeLog(`Documentation Generation Script Log File\n\n`)
 }
@@ -173,17 +174,18 @@ if(!settings['nologging']) {
 //  Remove old documentation folder if defined in settings
 if(settings['removeold']) {
   try {
-    fs.rmSync(path.normalize(`${process.cwd()}/${constants.OUTPUT_FOLDER}`),
+    fs.rmSync(path.join(process.cwd(), constants.OUTPUT_FOLDER),
       {recursive: true, force: true})
   } catch (error) {}
 }
-verifyFolder(`${process.cwd()}/${constants.OUTPUT_FOLDER}`)
+verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER))
 
 var logRes = ""
 console.log(`Running jobs, please wait...`)
 jobRunner(settings['jobs'], "",
   (job:job) => {
-    if(job['checkfolder']) verifyFolder(`${process.cwd()}/${constants.OUTPUT_FOLDER}/${job['name']}`)
+    if(job['checkfolder'])
+      verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job['name']))
     var runCmd = settings['generators'][job['generator']]
     runCmd = runCmd.replaceAll('$PROJECT_LOCATION', job['path'])
     runCmd = runCmd.replaceAll('$PROJECT', job['name'])

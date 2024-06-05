@@ -1,6 +1,6 @@
 {
   "name": "@spongex/docbuilder",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Run document generators to build documentation files",
   "author": "Matthew Evans",
   "license": "MIT",
@@ -22,31 +22,24 @@
   },
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "tsup"
+    "prepublishOnly": "npm run build"
   },
   "bin": {
     "docbuilder": "dist/docbuilder.js"
   },
   "type": "module",
-  "tsup": {
-    "entry": [
-      "./src/docbuilder.ts"
-    ],
-    "format": "esm",
-    "sourcemap": false,
-    "clean": true
-  },
   "files": [
     "./dist",
     "LICENSE.md",
     "README.md"
   ],
   "dependencies": {
-    "@spongex/script-error": "^1.0.0"
+    "@spongex/script-error": "^1.0.0",
+    "kolorist": "^1.8.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
-    "tsup": "^8.0.2",
+    "@types/node": "^20.14.2",
+    "tsup": "^8.1.0",
     "typescript": "^5.4.5"
   }
 }
