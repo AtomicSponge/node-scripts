@@ -8,4 +8,5 @@ export default defineConfig({
   sourcemap: false,
   clean: true,
   bundle: true,
+  minify: false
 })

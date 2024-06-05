@@ -1,20 +1,21 @@
 {
-  "name": "@spongex/gh-sync-followers",
-  "version": "1.1.0",
-  "description": "Sync GitHub Followers",
+  "name": "@spongex/create-random",
+  "version": "1.0.0",
+  "description": "Create random data",
   "author": "Matthew Evans",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomicSponge/node-scripts.git",
-    "directory": "gh-sync-followers"
+    "directory": "optional"
   },
-  "url": "https://www.npmjs.com/package/@spongex/gh-sync-followers",
-  "homepage": "https://github.com/AtomicSponge/node-scripts/#readme",
+  "url": "https://www.npmjs.com/package/@spongex/create-random",
+  "homepage": "https://github.com/AtomicSponge/node-scripts#readme",
   "keywords": [
-    "github",
-    "followers",
-    "sync",
+    "random",
+    "data",
+    "generate",
+    "generator",
     "script",
     "node"
   ],
@@ -26,7 +27,7 @@
     "prepublishOnly": "npm run build"
   },
   "bin": {
-    "gh-sync-followers": "dist/gh-sync-followers.js"
+    "create-random": "dist/create-random.js"
   },
   "type": "module",
   "files": [
@@ -37,14 +38,13 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "dependencies": {
-    "@spongex/os-appdata-path": "^0.2.1",
-    "@spongex/script-error": "^1.0.0",
-    "commander": "^12.1.0"
-  },
   "devDependencies": {
-    "@types/node": "^20.14.1",
+    "@types/node": "^20.14.2",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@spongex/script-error": "^1.0.0",
+    "commander": "^12.1.0"
   }
 }
