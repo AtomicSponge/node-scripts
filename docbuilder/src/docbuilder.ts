@@ -114,33 +114,33 @@ interface cmdRes {
     runningJobs.push(new AsyncResolver())
     const jobIDX = runningJobs.length - 1
     const run_command = splicer(job, command)
-    exec(run_command, { cwd: path.normalize(job['path']) }, (error:any, stdout:string, stderr:string) => {
+    exec(run_command, { cwd: path.normalize(job.path) }, (error:any, stdout:string, stderr:string) => {
       let cmdRes:cmdRes
       //  Command resulted in error, reject the job
       if(error) {
-        cmdRes = { name: job['name'], command: run_command,
+        cmdRes = { name: job.name, command: run_command,
                    code: error.code, stdout: stdout, stderr: stderr }
         runningJobs[jobIDX].reject(cmdRes)
       } else {
-        cmdRes = { name: job['name'], command: run_command,
+        cmdRes = { name: job.name, command: run_command,
                    code: 0, stdout: stdout, stderr: stderr }
 
         //  Copy over the data to the OUTPUT_FOLDER
         try {
           fs.cpSync(
-            path.join(job['path'], job['out']),
+            path.join(job.path, job.out),
             path.join(process.cwd(), constants.OUTPUT_FOLDER),
             { recursive:true })
         } catch (error:any) {
           //  Problems copying data, reject the job
-          deleteFolder(path.join(job['path'], job['out']))
+          deleteFolder(path.join(job.path, job.out))
           cmdRes.stderr = error.message
           runningJobs[jobIDX].reject(cmdRes)
         }
 
         //  Remove old data if configured
-        if(job.hasOwnProperty('removeold') && job['removeold'])
-          deleteFolder(path.join(job['path'], job['out']))
+        if(job.hasOwnProperty('removeold') && job.removeold)
+          deleteFolder(path.join(job.path, job.out))
 
         runningJobs[jobIDX].resolve(cmdRes)
       }
@@ -206,11 +206,11 @@ let logRes = ""
 console.log(`Running jobs, please wait...`)
 await jobRunner(settings['jobs'], '',
   (job:job) => {
-    if (job['checkfolder'])
-      verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job['name']))
-    let runCmd = settings['generators'][job['generator']]
-    runCmd = runCmd.replaceAll('$PROJECT_LOCATION', job['path'])
-    runCmd = runCmd.replaceAll('$PROJECT', job['name'])
+    if (job.checkfolder)
+      verifyFolder(path.join(process.cwd(), constants.OUTPUT_FOLDER, job.name))
+    let runCmd = settings['generators'][job.generator]
+    runCmd = runCmd.replaceAll('$PROJECT_LOCATION', job.path)
+    runCmd = runCmd.replaceAll('$PROJECT', job.name)
     runCmd = runCmd.replaceAll('$OUTPUT_FOLDER', constants.OUTPUT_FOLDER)
     return runCmd
   },
