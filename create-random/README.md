@@ -1,6 +1,6 @@
 #  create-random
 
-Generate random data
+Simple script to generate random data
 
 Install globally to run anywhere:
 ```
