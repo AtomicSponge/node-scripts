@@ -31,21 +31,19 @@ Inside the directory you wish to generate the documentation in, create a `.docbu
       "name": "wtengine",
       "generator": "doxygen",
       "path": "/home/matthew/Projects/wtengine",
-      "out": "docs",
       "checkfolder": "true"
     },
     {
       "name": "ppms",
       "generator": "doxygen",
       "path": "/home/matthew/Projects/ppms",
-      "out": "docs",
+      "out": "ppms-docs",
       "checkfolder": "true"
     },
     {
       "name": "wtgui",
       "generator": "typedoc",
       "path": "/home/matthew/Projects/wtgui",
-      "out": "docs"
     }
   ],
   "output_folder": "public/docs"
@@ -67,20 +65,30 @@ The script works by running each generator locally in the project's directory, t
 These are system commands used to launch each different document generator.
 
 The following variables can be used:
-- `$PROJECT` - The name of the project.
-- `$PROJECT_LOCATION` - The full path to the project.
-- `$OUTPUT_FOLDER` - The name of the output directory from settings.
+- `$PROJECT` - The name of the project
+- `$PROJECT_LOCATION` - The full path to the project
+- `$OUTPUT_FOLDER` - The name of the output directory from settings
+
+## Job Settings:
+- `"name": "project-name"` - Name of the project
+- `"generator": "gen"` - Which generator to use
+- `"path": "project/path"` - Full path to the project
 
 ## Optional Global Settings:
-- `"log_file": "filename"` - Change the filename of the log file.
-- `"output_folder": "foldername"` - Change the output directory name. (default docs)
-- `"nologging": "nologging"` - Disable logging.
+- `"log_file": "filename"` - Change the filename of the log file
+- `"output_folder": "foldername"` - Change the output directory name (default docs)
+- `"nologging": "nologging"` - Disable logging
 
 ## Optional Job Settings:
-- `"checkfolder": "true"` - Verify directory exists before generating docs.
-- `"removeold": "true"` - Delete the old documentation directory after generation.
+- `"out": "out/folder"` - Output folder created by generator
+- `"checkfolder": "true"` - Verify directory exists before generating docs
+- `"removeold": "true"` - Delete the old documentation directory after generation
 
 # Changelog
+
+## 2.1.1
+- Improvements to README
+- Made `out` default to `docs` and optional
 
 ## 2.1.0
 - *NOTE* Changes in functionality that breaks previous versions
