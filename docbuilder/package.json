@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@spongex/async-resolver": "^1.0.1",
-    "@spongex/script-error": "^1.0.0",
+    "@spongex/script-error": "^1.0.1",
     "@spongex/system-locale": "^1.0.0",
     "kolorist": "^1.8.0"
   },
