@@ -67,6 +67,9 @@ npx gh-sync-followers ignorelist-remove AtomicSponge
 
 # Changelog
 
+## Development branch
+- Dependencies bump
+
 ## 1.1.0
 - Added approvelist & ignorelist features
 - Bump dependencies

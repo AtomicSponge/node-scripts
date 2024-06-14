@@ -81,6 +81,9 @@ Passing the *-t* or *--test* option will not modify files but instead show the o
 
 # Changelog
 
+## Development branch
+- Dependencies bump
+
 ## 2.0.1
 - Bump packages and relocated project on GitHub
 - Updated project name to proper NPM formatting

@@ -86,6 +86,9 @@ The following variables can be used:
 
 # Changelog
 
+## Development branch
+- Dependencies bump
+
 ## 2.1.1
 - Improvements to README
 - Made `out` default to `docs` and optional

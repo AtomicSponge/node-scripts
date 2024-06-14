@@ -116,6 +116,9 @@ Each job object can also have a __backup_command__ item that will overwrite the 
 
 # Changelog
 
+## Development branch
+- Dependencies bump
+
 ## 2.0.1
 - Bump packages and relocated project on GitHub
 - Updated project name to proper NPM formatting
