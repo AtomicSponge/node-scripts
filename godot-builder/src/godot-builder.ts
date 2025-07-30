@@ -68,7 +68,7 @@ settings.jobs.forEach((job:Job, IDX:number) => {
     scriptError(`Failed to run job ${IDX+1} of ${settings.jobs.length}.`)
   }
 
-  console.log(`Job ${colors.YELLOW}${IDX+1}${colors.CLEAR} of` +
+  console.log(`Job ${colors.YELLOW}${IDX+1}${colors.CLEAR} of ` +
     `${colors.YELLOW}${settings.jobs.length}${colors.CLEAR} complete!`)
 })
 
