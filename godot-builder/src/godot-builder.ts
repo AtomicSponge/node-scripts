@@ -57,9 +57,9 @@ console.log(`${colors.GREEN}Building binaries...${colors.CLEAR}`)
 var settings = loadSettings(`${process.cwd()}/${constants.SETTINGS_FILE}`)
 
 if(settings.godot_command === undefined) scriptError(`Must configure path to Godot executable`)
-if(!(settings['jobs'] instanceof Array)) scriptError(`No Jobs defined.`)
+if(!(settings.jobs instanceof Array)) scriptError(`No Jobs defined.`)
 
-settings['jobs'].forEach((job:Job, IDX:number) => {
+settings.jobs.forEach((job:Job, IDX:number) => {
   if(job.preset === undefined || job.path === undefined)
     scriptError(`Job ${IDX+1} of ${settings['jobs'].length} incorrect format.`)
   execSync(`${settings.godot_command} --export-release ${job.preset} ${job.path}`)
