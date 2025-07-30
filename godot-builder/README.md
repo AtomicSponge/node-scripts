@@ -4,7 +4,7 @@ Script for building Godot projects.
 
 Recommended to install as a global script:
 ```
-npm i -g @spongex/backup-scrips
+npm i -g @spongex/godot-builder
 ```
 
 To use create a local `.godot_builder_config.json` file in your Godot project with the following format:
