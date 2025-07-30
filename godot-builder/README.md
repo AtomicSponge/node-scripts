@@ -9,6 +9,7 @@ npm i -g @spongex/godot-builder
 
 To use create a local `.godot_builder_config.json` file in your Godot project with the following format:
 
+```
 {
   "godot_command": "godotsteam.441.editor.linux.x86_64",
   "jobs": [
@@ -22,6 +23,7 @@ To use create a local `.godot_builder_config.json` file in your Godot project wi
     }
   ]
 }
+```
 
 Then run `npx godot-builder` and allow it to complete the builds.
 
