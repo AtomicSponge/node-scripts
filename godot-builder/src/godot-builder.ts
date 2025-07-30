@@ -44,7 +44,7 @@ const constants = {
  * @param SETTINGS_FILE File to load
  * @returns Settings JSON object
  */
-export const loadSettings = (SETTINGS_FILE:string) => {
+const loadSettings = (SETTINGS_FILE:string) => {
   try {
     return JSON.parse(fs.readFileSync(path.normalize(SETTINGS_FILE)).toString())
   } catch (error) {
