@@ -11,6 +11,12 @@ import path from 'node:path'
 import { execSync } from 'node:child_process'
 import { scriptError } from '@spongex/script-error'
 
+//  Job interface
+interface job {
+  name: string
+  path: string
+}
+
 const colors = {
   RED:    `\x1b[31m`,
   GREEN:  `\x1b[32m`,
@@ -28,20 +34,26 @@ const constants = {
 }
 
 /**
- * Load local settings file
+ * Load local settings file - exit script on fail.
  * @param SETTINGS_FILE File to load
- * @param noerror Pass true to ignore the script error
  * @returns Settings JSON object
- * @throws Error on fail then exits script
  */
-export const loadSettings = (SETTINGS_FILE:string, noerror?:boolean) => {
+export const loadSettings = (SETTINGS_FILE:string) => {
   try {
     return JSON.parse(fs.readFileSync(path.normalize(SETTINGS_FILE)).toString())
   } catch (error) {
-    if(!noerror) scriptError(`Can't find a '${SETTINGS_FILE}' configuration file.`)
+    scriptError(`Can't find a local '${SETTINGS_FILE}' configuration file.`)
   }
 }
 
 console.log(`${colors.GREEN}Building binaries...${colors.CLEAR}`)
 
-var settings = loadSettings(`${process.cwd()}/${constants.SETTINGS_FILE}`, true)
+var settings = loadSettings(`${process.cwd()}/${constants.SETTINGS_FILE}`)
+
+if(!(settings['jobs'] instanceof Array)) scriptError(`No Jobs defined.`)
+
+settings['jobs'].forEach((job:job, IDX:number) => {
+  if(job.name === undefined || job.path === undefined)
+    scriptError(`Job ${IDX+1} of ${settings['jobs'].length} incorrect format.`)
+  execSync(``)
+})
