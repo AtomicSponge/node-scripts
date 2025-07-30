@@ -12,9 +12,15 @@ import { execSync } from 'node:child_process'
 import { scriptError } from '@spongex/script-error'
 
 //  Job interface
-interface job {
-  name: string
+interface Job {
+  preset: string
   path: string
+}
+
+//  Settings interface
+interface Settings {
+  godot_command: string
+  jobs: Array<Job>
 }
 
 const colors = {
@@ -50,10 +56,11 @@ console.log(`${colors.GREEN}Building binaries...${colors.CLEAR}`)
 
 var settings = loadSettings(`${process.cwd()}/${constants.SETTINGS_FILE}`)
 
+if(settings.godot_command === undefined) scriptError(`Must configure path to Godot executable`)
 if(!(settings['jobs'] instanceof Array)) scriptError(`No Jobs defined.`)
 
-settings['jobs'].forEach((job:job, IDX:number) => {
-  if(job.name === undefined || job.path === undefined)
+settings['jobs'].forEach((job:Job, IDX:number) => {
+  if(job.preset === undefined || job.path === undefined)
     scriptError(`Job ${IDX+1} of ${settings['jobs'].length} incorrect format.`)
-  execSync(``)
+  execSync(`${settings.godot_command} --export-release ${job.preset} ${job.path}`)
 })
