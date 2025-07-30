@@ -54,7 +54,7 @@ export const loadSettings = (SETTINGS_FILE:string) => {
 
 console.log(`${colors.GREEN}Building binaries...${colors.CLEAR}`)
 
-var settings = loadSettings(`${process.cwd()}/${constants.SETTINGS_FILE}`)
+var settings:Settings = loadSettings(`${process.cwd()}/${constants.SETTINGS_FILE}`)
 
 if(settings.godot_command === undefined) scriptError(`Must configure path to Godot executable`)
 if(!(settings.jobs instanceof Array)) scriptError(`No Jobs defined.`)
