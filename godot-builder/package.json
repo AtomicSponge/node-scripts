@@ -1,0 +1,43 @@
+{
+  "name": "@spongex/godot-builder",
+  "version": "1.0.0",
+  "description": "Script for building Godot projects",
+  "author": "Matthew Evans",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomicSponge/node-scripts.git",
+    "directory": "godot-builder"
+  },
+  "url": "https://www.npmjs.com/package/@spongex/godot-builder",
+  "homepage": "https://github.com/AtomicSponge/godot-builder#readme",
+  "keywords": [
+    "node",
+    "script",
+    "godot"
+  ],
+  "bugs": {
+    "url": "https://github.com/AtomicSponge/node-scripts/issues"
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "bin": {
+    "script-name": "dist/godot-builder.js"
+  },
+  "type": "module",
+  "files": [
+    "./dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}
