@@ -39,5 +39,8 @@
     "@types/node": "^24.1.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@spongex/script-error": "^1.0.1"
   }
 }

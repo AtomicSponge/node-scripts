@@ -2,6 +2,11 @@
 
 Script for building Godot projects.
 
+Recommended to install as a global script:
+```
+npm i -g @spongex/backup-scrips
+```
+
 Usage:
 
 
