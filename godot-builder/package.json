@@ -24,7 +24,7 @@
     "prepublishOnly": "npm run build"
   },
   "bin": {
-    "script-name": "dist/godot-builder.js"
+    "godot-builder": "dist/godot-builder.js"
   },
   "type": "module",
   "files": [

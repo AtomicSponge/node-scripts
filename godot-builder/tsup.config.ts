@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  entry: [ "./src/script-name.ts" ],
+  entry: [ "./src/godot-builder.ts" ],
   platform: "node",
   format: "esm",
   dts: false,
