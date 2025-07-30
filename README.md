@@ -26,3 +26,8 @@ Run multiple document generators for multiple projects with one command.
 Sync your GitHub followers!
 
 <sub>[link](https://github.com/AtomicSponge/node-scripts/tree/main/gh-sync-followers)</sub>
+
+## Godot Builder
+Builds Godot projects.
+
+<sub>[link](https://github.com/AtomicSponge/node-scripts/tree/main/godot-builder)</sub>
