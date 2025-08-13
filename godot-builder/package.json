@@ -1,6 +1,6 @@
 {
   "name": "@spongex/godot-builder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Script for building Godot projects",
   "author": "Matthew Evans",
   "license": "MIT",
@@ -36,9 +36,9 @@
     "node": ">=20.0.0"
   },
   "devDependencies": {
-    "@types/node": "^24.1.0",
+    "@types/node": "^24.2.1",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@spongex/script-error": "^1.0.1"

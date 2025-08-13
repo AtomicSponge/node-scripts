@@ -29,5 +29,9 @@ Then run `npx godot-builder` and allow it to complete the builds.
 
 # Changelog
 
+## 1.1.0
+- Added --headless so it runs in Godot headless mode
+- Deps bump
+
 ## 1.0.0
 - Initial release

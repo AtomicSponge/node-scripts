@@ -63,7 +63,7 @@ settings.jobs.forEach((job:Job, IDX:number) => {
   if(job.preset === undefined || job.path === undefined)
     scriptError(`Job ${IDX+1} of ${settings.jobs.length} incorrect format.`)
   try {
-    execSync(`${settings.godot_command} --export-release ${job.preset} ${job.path}`)
+    execSync(`${settings.godot_command} --headless --export-release ${job.preset} ${job.path}`)
   } catch (error) {
     scriptError(`Failed to run job ${IDX+1} of ${settings.jobs.length}.`)
   }
